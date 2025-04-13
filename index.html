@@ -110,7 +110,7 @@
   </nav>
   
  <!-- ABOUT SECTION -->
- <section id="about" class="profile-section">
+ <section id="about" class="profile-section fade-in-up">  
   <div class="profile-container">
     <div class="profile-image">
       <img src="images/all-about-gaeul.jpg" alt="Gaeul">
@@ -126,7 +126,7 @@
 </section>
 
   <!-- DISCOGRAPHY SECTION -->
-  <section id="eras">
+  <section id="eras" class="fade-in-up">
     <h2>Discography</h2>
     <div class="era-list">
       <div class="era-card">ELEVEN</div>
@@ -141,7 +141,7 @@
   </section>
 
   <!-- PROJECTS SECTION -->
-  <section id="projects">
+  <section id="projects" class="fade-in-up">
     <h2>Projects</h2>
     <div class="project-cards">
       <div class="project-card">
@@ -160,7 +160,7 @@
   </section>
 
   <!-- GALLERY SECTION -->
-  <section id="gallery">
+  <section id="gallery" class="fade-in-up">
     <h2>Gallery</h2>
     <div class="gallery-grid">
     <div class="hover-img">
@@ -179,5 +179,21 @@
   <footer>
     <p>Fanmade for Kim Gaeul — 2025 ©ivegaeul__</p>
   </footer>
+
+<script>
+  const fadeEls = document.querySelectorAll('.fade-in-up');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>

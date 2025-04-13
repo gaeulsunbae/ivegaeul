@@ -2,6 +2,17 @@ html {
   scroll-behavior: smooth;
 }
 
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+.fade-in-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -103,16 +114,14 @@ section {
   text-align: center;
 }
 
-/* Tạo khoảng cách phía trên section Profile (sau nav bar) */
 #about {
-  margin-top: 60px; /* bạn có thể chỉnh 40px hoặc 80px tùy theo cảm giác */
+  margin-top: 60px;
 }
 
 html {
   scroll-padding-top: 80px;
 }
 
-/* Gaeul Profile */
 #about {
   padding: 4rem 2rem;
   display: flex;
@@ -143,7 +152,6 @@ html {
   color: #333;
 }
 
-/*Eras*/
 .era-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -164,7 +172,6 @@ html {
   transform: scale(1.05) rotate(-1deg);
 }
 
-/*Projects*/
 .project-cards {
   display: flex;
   flex-wrap: wrap;
@@ -191,15 +198,13 @@ html {
   border-radius: 15px;
 }
 
-
-/* Gallery */
 .gallery-grid {
-  display: flex; /* đổi từ grid sang flex để dễ canh giữa ảnh nhỏ */
+  display: flex;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; /* khoảng cách giữa ảnh */
+  gap: 20px;
   flex-wrap: wrap;
   padding: 1rem;
-  justify-content: center; /* canh giữa toàn bộ ảnh */
+  justify-content: center;
   align-items: center;
   text-align: center;
   padding-left: 10px;
@@ -259,8 +264,6 @@ html {
   transform: scale(1.05);
 }
 
-
-/*Footer*/
 footer {
   background: #0b1a2f;
   color: white;
@@ -268,8 +271,6 @@ footer {
   padding: 1rem;
 }
 
-
-/*Media*/
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
@@ -317,4 +318,5 @@ footer {
   filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
   pointer-events: none;
 }
+
 
