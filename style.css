@@ -1,0 +1,899 @@
+html {
+     scroll-behavior: smooth;
+     scroll-padding-top: 80px;
+ }
+ 
+ body {
+     margin: 0;
+     font-family: 'Poppins', sans-serif;
+     background: linear-gradient(to bottom right, #183358, #d4e2fd, #ffffff);
+     color: #222;
+ }
+ 
+ /* HERO SECTION */
+
+ .hero {
+     background: url('https://link-to-bright-stylish-gaeul.jpg') no-repeat center center/cover;
+     height: 100vh;
+     position: relative;
+     color: white;
+     font-family: 'Playfair Display', serif;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow: hidden; /* Ẩn phần GIF tràn ra ngoài */
+ }
+
+ .hero-gif {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     opacity: 0.5; /* Độ trong suốt */
+     z-index: 0; /* Đặt phía sau nội dung */
+ }
+
+ .overlay {
+     text-align: center;
+     position: relative; /* Đặt trên GIF */
+     z-index: 1;
+ }
+
+ /* ... (các style khác của HERO SECTION) ... */
+ 
+ .hero-logo {
+     width: 220px;
+     animation: float 4s ease-in-out infinite;
+     margin-bottom: 20px;
+ }
+ 
+ .hero-caption-container {
+     position: relative;
+     text-align: center;
+     margin-top: 20px;
+ }
+ 
+ .hero-caption {
+     font-family: 'Playfair Display', serif;
+     font-size: 2.5rem;
+     color: white;
+     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+     position: relative;
+     animation: fadeIn 1.5s ease-in, glowFlash 6s ease-in-out infinite;
+ }
+ 
+ .signature {
+     position: absolute;
+     bottom: -30px;
+     right: 50%;
+     transform: translateX(150%);
+     width: 100px;
+     opacity: 0.9;
+     filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+     pointer-events: none;
+ }
+ 
+ @keyframes float {
+     0%,
+     100% {
+         transform: translateY(0);
+     }
+ 
+     50% {
+         transform: translateY(-10px);
+     }
+ }
+ 
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(10px);
+     }
+ 
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+ 
+ @keyframes glowFlash {
+     0% {
+         text-shadow: 0 0 0px transparent;
+         opacity: 0.5;
+     }
+ 
+     40% {
+         text-shadow: 0 0 10px #ffffff,
+             0 0 20px #a2c8ff,
+             0 0 30px #6ea3ff;
+         opacity: 1;
+     }
+ 
+     100% {
+         text-shadow: 0 0 0px transparent;
+         opacity: 0.4;
+     }
+ }
+ 
+ 
+ /* NAVIGATION */
+ .nav-container {
+     background: rgba(255, 255, 255, 0.9);
+     border: 1px solid rgba(0, 0, 0, 0.05);
+     border-radius: 0px;
+     padding: 1rem 2rem;
+     position: sticky;
+     top: 0;
+     z-index: 999;
+     display: flex;
+     gap: 20px;
+     box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+     backdrop-filter: blur(10px);
+     animation: fadeIn 0.8s ease-in-out;
+     justify-content: center;
+     align-items: center;
+     margin: 20px auto;
+     max-width: -webkit-full-screen;
+     /* Or some other suitable max-width */
+     flex-wrap: wrap;
+ }
+ 
+ .nav-container a {
+     color: #333;
+     text-decoration: none;
+     font-size: 15px;
+     padding: 8px 12px;
+     border-radius: 12px;
+     transition: all 0.3s ease;
+     position: relative;
+     font-weight: bold;
+     /* Consolidated font-weight here */
+ }
+ 
+ .nav-container a::before {
+     content: "";
+     position: absolute;
+     inset: 0;
+     border-radius: 12px;
+     background: linear-gradient(120deg, #dde6ff, #9cbdee);
+     z-index: -1;
+     transform: scaleX(0);
+     transform-origin: left;
+     transition: transform 0.3s ease;
+ }
+ 
+ .nav-container a:hover::before {
+     transform: scaleX(1);
+ }
+ 
+ .nav-container a:hover {
+     color: #000;
+ }
+ 
+ .nav-toggle {
+     display: none; /* Initially hide the button */
+     font-size: 1.5rem;
+     background: none;
+     border: none;
+     cursor: pointer;
+     position: absolute; /* Thêm position: absolute; */
+     top: 0.5rem;      /* Điều chỉnh vị trí */
+     right: 0.5rem;
+     z-index: 1000;     /* Đảm bảo ở trên các phần tử khác */
+ }
+ 
+ .nav-container.expanded {
+     flex-direction: column;
+     align-items: flex-start; /* Thay đổi thành flex-start */
+     padding-bottom: 1rem;   /* Thêm padding dưới */
+     height: auto;       /* Thêm height: auto; */
+     overflow: visible;   /* Thêm overflow: visible; */
+ }
+ 
+ .nav-container.expanded a {
+     display: block;      /* Hiển thị các liên kết dạng block */
+     width: 100%;
+     text-align: left;
+     opacity: 1;
+ }
+ 
+ /* MEDIA QUERIES */
+ @media (max-width: 768px) {
+     .nav-container {
+         flex-direction: column;
+         align-items: center;
+         padding: 0.5rem; /* Adjust padding for smaller screens */
+         height: auto;
+         overflow: hidden;
+         max-height: 50px;
+         transition: max-height 0.3s ease-out;
+     }
+
+     .nav-container a {
+         opacity: 0;       /* Ẩn chữ ban đầu */
+         transition: opacity 0.3s ease; /* Thêm transition cho opacity */
+     }
+ 
+     .nav-toggle {
+         display: block; /* Show the button on smaller screens */
+     }
+ 
+     .nav-container.expanded {
+         flex-direction: column;
+         align-items: center;
+         max-height: 500px; /* Or a suitable height */
+         overflow: visible;
+         transition: max-height 0.3s ease-in;
+     }
+ }
+
+ 
+ /* SECTIONS */
+ section {
+     padding: 5rem 2rem 3rem;
+     text-align: center;
+ }
+ 
+ body.nav-expanded section {
+     opacity: 1;           /* Hiển thị khi có class .nav-expanded */
+     transform: translateY(0);
+ }
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95); /* Bắt đầu từ dưới, nhỏ hơn */
+  transition: all 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); /* Ease-in-out mạnh mẽ */
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-40px) scale(0.95); /* Bắt đầu từ trái */
+  transition: all 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(40px) scale(0.95); /* Bắt đầu từ phải */
+  transition: all 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.fade-in-up.show,
+.fade-in-left.show,
+.fade-in-right.show {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+ 
+ /* PROFILE SECTION */
+#profile h2 {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 10px #88b0bb;
+    transition: text-shadow 0.5s ease-in-out;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+#profile h2:hover {
+    text-shadow: 0 0 20px #88b0bb, 0 0 30px #a2d2ff;
+}
+
+#profile h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #a2d2ff, #88b0bb);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+ #profile {
+     /* Renamed to 'profile' to match the nav link */
+     padding: 4rem 2rem;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     margin: 2rem auto;
+     max-width: 800px;
+ }
+ 
+ #profile img {
+     border-radius: 20px;
+     border: 3px solid #f4e8ff;
+     width: 180px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     margin-bottom: 1.5rem;
+ }
+ 
+ #profile h3 {
+     font-size: 2.2rem;
+     margin-bottom: 1rem;
+     color: #0b1a2f;
+ }
+ 
+ #profile p {
+     margin: 0.3rem 0;
+     font-size: 1.05rem;
+     color: #333;
+ }
+ 
+
+/* DISCOGRAPHY SECTION */
+#discography {
+    text-align: center;
+}
+
+#discography h2 {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 10px #88b0bb;
+    transition: text-shadow 0.5s ease-in-out;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+#discography h2:hover {
+    text-shadow: 0 0 20px #88b0bb, 0 0 30px #a2d2ff;
+}
+
+#discography h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #a2d2ff, #88b0bb);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.discography-category-container {
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    gap: 3rem;
+    flex-wrap: wrap; /* Cho phép các cột xuống hàng nếu cần */
+}
+
+.discography-category-container .discography-category {
+    width: calc(33.33% - 2rem); /* Chiếm 33% trừ khoảng cách */
+    box-sizing: border-box;
+}
+
+
+/* Thêm đoạn code này */
+@media (max-width: 768px) {
+    .discography-category-container {
+        display: flex;
+        flex-direction: column; /* Sắp xếp theo chiều dọc */
+        align-items: center;    /* Căn giữa theo chiều ngang */
+    }
+
+    .discography-category-container .discography-category {
+        width: 100%;           /* Chiếm toàn bộ chiều rộng */
+    }
+     
+    .album-card {
+        width: 100%;
+        max-width: 250%;
+        height: auto;
+    }
+
+    .discography-category-container .album-card {
+        width: 100%; /* Chia đều 3 cột */
+        max-width: 250%;
+    }
+
+}
+
+
+/* Các style hiện tại cho .discography-categories và .discography-category (cho các phần khác) */
+.discography-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+}
+
+.discography-category {
+    text-align: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.discography-category h3 {
+    font-size: 1.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px #88b0bb; /* Bóng phát sáng */
+    transition: text-shadow 0.5s ease-in-out;
+    position: relative;
+}
+
+.album-cards {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.album-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 180px;
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.album-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.album-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.album-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    text-align: center;
+}
+
+.album-card:hover .album-info {
+    opacity: 1;
+}
+
+.album-info h4 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    word-wrap: break-word;
+    margin-bottom: 0.2rem;
+}
+
+.album-info p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #eee;
+}
+
+
+/* OFFICIAL CHANNEL SECTION */
+#videos {
+    text-align: center;
+}
+
+.videos-categories { /* Đổi tên class */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.videos-category {
+    margin-bottom: 2rem;
+}
+
+/* Style cho tiêu đề section (Videos) - Giữ nguyên từ Projects */
+#videos h2 {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 10px #88b0bb;
+    transition: text-shadow 0.5s ease-in-out;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+#videos h2:hover {
+    text-shadow: 0 0 20px #88b0bb, 0 0 30px #a2d2ff;
+}
+
+#videos h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #a2d2ff, #88b0bb);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Style cho tiêu đề các mục con (IVE ON, v.v.) */
+.videos-category h3 {
+    font-size: 1.9rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: left;
+    text-shadow: 0 0 10px #88b0bb;
+    transition: text-shadow 0.5s ease-in-out;
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+}
+
+.videos-category h3:hover {
+    text-shadow: 0 0 20px #88b0bb, 0 0 30px #a2d2ff;
+}
+
+.videos-category h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3px;
+    height: 60%;
+    background: linear-gradient(to bottom, #a2d2ff, #88b0bb);
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+
+.videos-videos {
+    display: grid; /* Thay đổi từ flex thành grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Chia cột tự động */
+    gap: 1rem;
+    overflow: visible;
+    white-space: normal;
+    animation: none; /* Loại bỏ animation cuộn */
+    padding-bottom: 0;
+}
+
+.videos-video {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: auto;
+    max-width: none;
+    height: auto;
+    margin-bottom: 0;
+    position: relative;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.videos-video:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+.main-thumbnail {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.video-details {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0 0 12px 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.small-thumbnail {
+    width: 90px;
+    height: 80px;
+    object-fit: none;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.small-thumbnail-1 { 
+    object-position: 60% 60%; 
+}
+
+.small-thumbnail-2 { 
+    object-position: 90% 60%; 
+}
+
+.small-thumbnail-3 { 
+    object-position: 50% 60%;
+}
+
+.video-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 0.5rem;
+}
+
+.videos-video h4 {
+    font-size: 0.9rem;
+    margin: 0 0 0.2rem 0;
+    text-align: left;
+    color: #333;
+    font-weight: bold;
+}
+
+.videos-video p.views {
+    font-size: 0.75rem;
+    margin: 0;
+    color: #666;
+    text-align: left;
+}
+
+.videos-video p.published {
+    font-size: 0.75rem;
+    margin: 0;
+    color: #666;
+    text-align: left;
+}
+
+.videos-wrapper {
+    overflow: visible;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+ /* GALLERY SECTION */
+
+#gallery h2 {
+    font-size: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 10px #88b0bb;
+    transition: text-shadow 0.5s ease-in-out;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+#gallery h2:hover {
+    text-shadow: 0 0 20px #88b0bb, 0 0 30px #a2d2ff;
+}
+
+#gallery h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #a2d2ff, #88b0bb);
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+
+ .gallery-grid {
+     display: flex;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     flex-wrap: wrap;
+     padding: 1rem;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     padding-left: 10px;
+ }
+ 
+ .gallery-grid img {
+     width: 70%;
+     max-width: 250% height: auto;
+     border-radius: 10px;
+     transition: transform 0.3s;
+     cursor: pointer;
+     border: 3px solid #f4e8ff;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     margin-bottom: 1.5rem;
+     display: block;
+     margin: 0 auto;
+ }
+ 
+ .gallery-grid img:hover {
+     transform: scale(1.05);
+ }
+ 
+ .hover-img {
+     position: relative;
+     width: 70%;
+     max-width: 250px;
+     margin-bottom: 1.5rem;
+     cursor: pointer;
+ }
+ 
+ .hover-img img {
+     width: 100%;
+     height: auto;
+     border-radius: 10px;
+     border: 3px solid #f4e8ff;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     transition: transform 1.0s ease, opacity 1.0s ease;
+     display: block;
+ }
+ 
+ .hover-img .hovered-img {
+     position: absolute;
+     top: 0;
+     left: 0;
+     opacity: 0;
+     z-index: 1;
+ }
+ 
+ .hover-img:hover .hovered-img {
+     opacity: 1;
+     transform: scale(1.05);
+ }
+ 
+ .hover-img:hover .default-img {
+     opacity: 0;
+     transform: scale(1.05);
+ }
+ 
+ /* FOOTER */
+ footer {
+     background: #0b1a2f;
+     color: white;
+     text-align: center;
+     padding: 1rem;
+     position: relative; /* Thêm position: relative; */
+ }
+ 
+ .back-to-top {
+     position: absolute; /* Định vị tuyệt đối */
+     top: 0.5rem;
+     right: 0.5rem;
+     font-size: 1.5rem;
+     color: white;
+     text-decoration: none;
+     display: none;   /* Ẩn ban đầu */
+     transition: opacity 0.3s ease;
+ }
+ 
+.back-to-top img {
+  width: 3rem;   /* Kích thước */
+  height: 3rem;
+  vertical-align: middle; /* Căn chỉnh theo chiều dọc */
+}
+
+ .back-to-top:hover {
+     opacity: 1;
+     transform: scale(1.05);
+ }
+
+.back-to-top:hover img {
+    animation-play-state: paused;
+}
+
+ 
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-container.expanded {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-logo {
+        width: 180px;
+    }
+
+    .project-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #profile {
+        padding: 3rem 1rem;
+        margin: 1rem;
+    }
+
+    #profile img {
+        width: 140px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #discography .discography-category h3 {
+        font-size: 1.5rem;
+    }
+
+    .album-card {
+        width: calc(50% - 1rem);
+    }
+
+    .discography-category-container .album-card {
+        width: calc(100% / 3 - 1rem); /* Chia đều 3 cột */
+    }
+ }
+
+ 
+ /* KEYFRAMES */
+ @keyframes float {
+     0%,
+     100% {
+         transform: translateY(0);
+     }
+ 
+     50% {
+         transform: translateY(-10px);
+     }
+ }
+ 
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+     }
+ 
+     to {
+         opacity: 1;
+     }
+ }

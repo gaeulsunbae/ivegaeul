@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>Gaeul sunbae</title>
+     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;600&display=swap"
+         rel="stylesheet">
+     <link rel="stylesheet" href="style.css" />
+     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">  </head>
+
+ 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const nav = document.querySelector(".nav-container");
+        const toggleBtn = document.createElement("button");
+        toggleBtn.innerHTML = "☰";
+        toggleBtn.className = "nav-toggle";
+        toggleBtn.addEventListener("click", () => {
+            nav.classList.toggle("expanded");
+        });
+        nav.insertBefore(toggleBtn, nav.firstChild);
+    });
+</script>
+
+ 
+ </head>
+ 
+ <body>
+ <header id="home" class="hero">
+     <img src="https://i.pinimg.com/originals/de/ba/ba/debabaa29d8ccd55352a4a8b3940f5a7.gif" alt="Lấp lánh" class="hero-gif">  <div class="overlay">
+         <img src="images/gaeul-logo.jpg" alt="Gaeul Logo" class="hero-logo fancy-logo" />
+         <div class="hero-caption-container">
+             <h1 class="hero-caption fancy-caption">falling in Fall</h1>
+             <img src="images/signature.png" alt="Gaeul signature" class="signature">
+         </div>
+     </div>
+ </header>
+ 
+     <nav class="nav-container">
+         <a href="#home">Home</a>
+         <a href="#profile">Profile</a>
+         <a href="#discography">Discography</a>
+         <a href="#videos">Videos</a>
+         <a href="#gallery">Gallery</a>
+         <a href="#about">About</a>
+     </nav>
+ 
+     <section id="profile" class="profile-section fade-in-up">
+         <div class="profile-container">
+             <div class="profile-image">
+                 <img src="images/all-about-gaeul.jpg" alt="Gaeul">
+             </div>
+             <div class="profile-info">
+                 <h2>Kim Gaeul (22)</h2>
+                 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHNoMHE4MTk1eGt3cTFjOWZodTcxdXdkZ3ZlbzR2ZTN5OGxjMHZwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9NaMJmQoQrKog/giphy.gif" alt="flowers">
+                 <p>김가을/ ガウル/ 金秋天</p>
+                 <p>IVE (Starship Ent.)</p>
+                 <p>2021.12.01</p>
+                 <p>2002.09.24</p>
+             </div>
+         </div>
+     </section>
+ 
+ <section id="discography" class="fade-in-up">
+    <h2>Discography</h2>
+    <img src="https://i.imgur.com/JepMRWk.gif" alt="flowers">
+    <div class="discography-categories">
+        <div class="discography-category">
+            <h3>Single Albums</h3>
+            <div class="album-cards">
+                <div class="album-card">
+                    <img src="images/eleven_album_cover.jfif" alt="ELEVEN">
+                    <div class="album-info">
+                        <h4>ELEVEN</h4>
+                        <p>(The 1st Single Album)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/love_dive_album_cover.jfif" alt="LOVE DIVE">
+                    <div class="album-info">
+                        <h4>LOVE DIVE</h4>
+                        <p>(The 2nd Single Album)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/after_like_album_cover.jfif" alt="After LIKE">
+                    <div class="album-info">
+                        <h4>After LIKE</h4>
+                        <p>(The 3rd Single Album)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="discography-category">
+            <h3>Pre-release Singles</h3>
+            <div class="album-cards">
+                <div class="album-card">
+                    <img src="images/kitsch_cover.jpg" alt="Kitsch">
+                    <div class="album-info">
+                        <h4>Kitsch</h4>
+                        <p>(I'VE IVE)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/either_way_cover.jpg" alt="Either Way">
+                    <div class="album-info">
+                        <h4>Either Way</h4>
+                        <p>(I'VE MINE)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/otr_cover.jpg" alt="Off the Record">
+                    <div class="album-info">
+                        <h4>Off the Record</h4>
+                        <p>(I'VE MINE)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/rebel_heart_cover.jfif" alt="Rebel Heart">
+                    <div class="album-info">
+                        <h4>Rebel Heart</h4>
+                        <p>(IVE EMPATHY)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="discography-category">
+            <h3>Mini Albums (EPs)</h3>
+            <div class="album-cards">
+                <div class="album-card">
+                    <img src="images/ive_mine_cover.jfif" alt="I'VE MINE">
+                    <div class="album-info">
+                        <h4>I'VE MINE</h4>
+                        <p>(The 1st EP)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/ive_switch_cover.jfif" alt="IVE SWITCH">
+                    <div class="album-info">
+                        <h4>IVE SWITCH</h4>
+                        <p>(The 2nd EP)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/ive_empathy_cover.jfif" alt="IVE EMPATHY">
+                    <div class="album-info">
+                        <h4>IVE EMPATHY</h4>
+                        <p>(The 3rd EP)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="discography-category">
+            <h3>Full Album</h3>
+            <div class="album-cards">
+                <div class="album-card">
+                    <img src="images/ive_ive_cover.jfif" alt="I'VE IVE">
+                    <div class="album-info">
+                        <h4>I'VE IVE</h4>
+                        <p>(The 1st Full Album)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="discography-category">
+            <h3>Japanese Albums</h3>
+            <div class="album-cards">
+                <div class="album-card">
+                    <img src="images/eleven_jpn_album_cover.jfif" alt="ELEVEN (Japanese ver.)">
+                    <div class="album-info">
+                        <h4>ELEVEN</h4>
+                        <p>(Japanese ver.)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/love_dive_jp.jfif" alt="LOVE DIVE (Japanese ver.)">
+                    <div class="album-info">
+                        <h4>LOVE DIVE</h4>
+                        <p>(Digital Single)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/wave_cover.jfif" alt="WAVE">
+                    <div class="album-info">
+                        <h4>WAVE</h4>
+                        <p>(IVE JAPAN 1st EP)</p>
+                    </div>
+                </div>
+                <div class="album-card">
+                    <img src="images/alive_cover.jfif" alt="ALIVE">
+                    <div class="album-info">
+                        <h4>ALIVE</h4>
+                        <p>(IVE JAPAN 2nd EP)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="discography-category-container">
+            <div class="discography-category">
+                <h3>English Albums</h3>
+                <div class="album-cards">
+                    <div class="album-card">
+                        <img src="images/all_night_cover.jfif" alt="All Night">
+                        <div class="album-info">
+                            <h4>All Night</h4>
+                            <p>(REMAKE SINGLE)</p>
+                        </div>
+                    </div>
+                    <div class="album-card">
+                        <img src="images/supernova_love_cover.jfif" alt="Supernova Love">
+                        <div class="album-info">
+                            <h4>Supernova Love</h4>
+                            <p>(DIGITAL SINGLE)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="discography-category">
+                <h3>CF Songs</h3>
+                <div class="album-cards">
+                    <div class="album-card">
+                        <img src="images/iwant_cover.jpg" alt="I WANT">
+                        <div class="album-info">
+                            <h4>I WANT</h4>
+                            <p>(IVE x Pepsi)</p>
+                        </div>
+                    </div>
+                    <div class="album-card">
+                        <img src="images/summer_festa_cover.jpg" alt="Summer Festa">
+                        <div class="album-info">
+                            <h4>Summer Festa</h4>
+                            <p>(IVE x Pepsi)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="discography-category">
+                <h3>OST</h3>
+                <div class="album-cards">
+                    <div class="album-card">
+                        <img src="images/will_ost_cover.jpg" alt="WILL">
+                        <div class="album-info">
+                            <h4>WILL</h4>
+                            <p>(Pokemon OST)</p>
+                        </div>
+                    </div>
+                    <div class="album-card">
+                        <img src="images/dare_me_cover.jfif" alt="DARE ME">
+                        <div class="album-info">
+                            <h4>Dare Me</h4>
+                            <p>(Damemane OST)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<section id="videos" class="fade-in-up">
+    <h2>VIDEOS</h2>
+    <div class="videos-categories">
+        <div class="videos-category" id="ive-on">
+            <h3>IVE ON</h3>
+            <div class="videos-wrapper">
+                <div class="videos-videos">
+                    <div class="videos-video" data-video-id="Zs27JWKyECQ">
+                        <img src="https://i.ytimg.com/an_webp/Zs27JWKyECQ/mqdefault_6s.webp?du=3000&sqp=CJC-9sAG&rs=AOn4CLDx6or7lJz3JXsRwQIZ9tYqfZcb0g" alt="IVE ON Video 8" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="https://i.ytimg.com/vi/Zs27JWKyECQ/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCqvAlbveoKuVzfOPwO_YWXWGXAaw" alt="IVE ON Video 8 Small" class="small-thumbnail small-thumbnail-3">
+                            <div class="video-text">
+                                <h4 class="video-title">[IVE ON] GAEUL x W.concept with LENINA BEHIND</h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="Mk3KhK7LL4k">
+                        <img src="https://i.ytimg.com/an_webp/Mk3KhK7LL4k/mqdefault_6s.webp?du=3000&sqp=CO-p9sAG&rs=AOn4CLCWgh8LiM6oe40bxjFqz4iytunRdw" alt="IVE ON Video 8" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="https://i.ytimg.com/vi/Mk3KhK7LL4k/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCFxN6EdIqeMXj5OKJL-ttQ4zBY9A" alt="IVE ON Video 8 Small" class="small-thumbnail small-thumbnail-2">
+                            <div class="video-text">
+                                <h4 class="video-title">[IVE ON] GAEUL x ELLE September issue</h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="BXf3XvHK1M8">
+                        <img src="https://i.ytimg.com/an_webp/BXf3XvHK1M8/mqdefault_6s.webp?du=3000&sqp=CIup9sAG&rs=AOn4CLDaRVbu10VkzqlQ0il1y2rDJkDtyQ" alt="IVE ON Video 8" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="https://i.ytimg.com/vi/BXf3XvHK1M8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBz89OB1BYFl3oHJez70ae0ePVEvw" alt="IVE ON Video 8 Small" class="small-thumbnail small-thumbnail-1">
+                            <div class="video-text">
+                                <h4 class="video-title">[IVE ON] W Korea May issue (with GAEUL x REI x LIZ)</h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="pvWKx3jMNjw">
+                        <img src="https://i.ytimg.com/an_webp/pvWKx3jMNjw/mqdefault_6s.webp?du=3000&sqp=CIyP9sAG&rs=AOn4CLBB2i6gTtCJwg_1YPo2lG7ifcPPAQ" alt="IVE ON Video 7" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="https://i.ytimg.com/vi/pvWKx3jMNjw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBe5P4Alyau81lahbhmwFD0i5jVoQ" alt="IVE ON Video 7 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title">[IVE ON] IVE with S Cawaii!</h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="IIKRxq1wnys">
+                        <img src="https://i.ytimg.com/an_webp/IIKRxq1wnys/mqdefault_6s.webp?du=3000&sqp=CPSv9sAG&rs=AOn4CLCH0EiRVFaZrzzthmLrLWVbLH5Obg" alt="IVE ON Video 6" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="https://i.ytimg.com/vi/IIKRxq1wnys/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDRntiBrujY2xzHJZPt1DGzwdobeg" alt="IVE ON Video 6 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title">[IVE ON] IVE with DAZED January issue</h4>
+                                <p class="video-views">Views: 194.104M</p>
+                                <p class="video-published">Published: 2022/05/22</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="videos-category" id="ive-off">
+            <h3>IVE OFF</h3>
+            <div class="videos-wrapper">
+                <div class="videos-videos">
+                    <div class="videos-video" data-video-id="your_ive_off_video_1_id">
+                        <img src="placeholder_ive_off_1.jpg" alt="IVE OFF Video 1" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_ive_off_1.jpg" alt="IVE OFF Video 1 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="your_ive_off_video_2_id">
+                        <img src="placeholder_ive_off_2.jpg" alt="IVE OFF Video 2" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_ive_off_2.jpg" alt="IVE OFF Video 2 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="videos-category" id="ive-log">
+            <h3>IVE LOG</h3>
+            <div class="videos-wrapper">
+                <div class="videos-videos">
+                    <div class="videos-video" data-video-id="your_ive_log_video_1_id">
+                        <img src="placeholder_ive_log_1.jpg" alt="IVE LOG Video 1" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_ive_log_1.jpg" alt="IVE LOG Video 1 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="your_ive_log_video_2_id">
+                        <img src="placeholder_ive_log_2.jpg" alt="IVE LOG Video 2" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_ive_log_2.jpg" alt="IVE LOG Video 2 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="videos-category" id="livestream">
+            <h3>LIVESTREAM</h3>
+            <div class="videos-wrapper">
+                <div class="videos-videos">
+                    <div class="videos-video" data-video-id="your_livestream_video_1_id">
+                        <img src="placeholder_livestream_1.jpg" alt="LIVESTREAM Video 1" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_livestream_1.jpg" alt="LIVESTREAM Video 1 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="your_livestream_video_2_id">
+                        <img src="placeholder_livestream_2.jpg" alt="LIVESTREAM Video 2" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_livestream_2.jpg" alt="LIVESTREAM Video 2 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="videos-category" id="shows">
+            <h3>SHOWS</h3>
+            <div class="videos-wrapper">
+                <div class="videos-videos">
+                    <div class="videos-video" data-video-id="your_shows_video_1_id">
+                        <img src="placeholder_shows_1.jpg" alt="SHOWS Video 1" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_shows_1.jpg" alt="SHOWS Video 1 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="your_shows_video_2_id">
+                        <img src="placeholder_shows_2.jpg" alt="SHOWS Video 2" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_shows_2.jpg" alt="SHOWS Video 2 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="videos-category" id="dive-into-ive">
+            <h3>DIVE INTO IVE</h3>
+            <div class="videos-wrapper">
+                <div class="videos-videos">
+                    <div class="videos-video" data-video-id="your_dive_into_ive_video_1_id">
+                        <img src="placeholder_dive_1.jpg" alt="DIVE INTO IVE Video 1" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_dive_1.jpg" alt="DIVE INTO IVE Video 1 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="videos-video" data-video-id="your_dive_into_ive_video_2_id">
+                        <img src="placeholder_dive_2.jpg" alt="DIVE INTO IVE Video 2" class="main-thumbnail">
+                        <div class="video-details">
+                            <img src="placeholder_dive_2.jpg" alt="DIVE INTO IVE Video 2 Small" class="small-thumbnail">
+                            <div class="video-text">
+                                <h4 class="video-title"></h4>
+                                <p class="video-views">Views: </p>
+                                <p class="video-published">Published: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const apiKey = 'AIzaSyAJ7XdwVgPCMyjeZGJtiRcg_9vvZE98rG4'; // **NHỚ THAY API KEY CỦA BẠN!**
+    const videoElements = document.querySelectorAll('.videos-video');
+
+    videoElements.forEach(videoElement => {
+        const videoId = videoElement.dataset.videoId;
+        const titleElement = videoElement.querySelector('.video-title');
+        const viewsElement = videoElement.querySelector('.video-views');
+        const publishedElement = videoElement.querySelector('.video-published');
+
+        if (videoId) {
+            fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        const video = data.items[0];
+                        titleElement.textContent = video.snippet.title;
+                        viewsElement.textContent = `Views: ${Number(video.statistics.viewCount).toLocaleString('en-US')}`;
+                        const publishedDate = new Date(video.snippet.publishedAt);
+                        const year = publishedDate.getFullYear();
+                        const month = String(publishedDate.getMonth() + 1).padStart(2, '0');
+                        const day = String(publishedDate.getDate()).padStart(2, '0');
+                        publishedElement.textContent = `Published: ${year}/${month}/${day}`;
+                    } else {
+                        console.warn(`Could not retrieve data for video ID: ${videoId}`);
+                    }
+                })
+                .catch(error => {
+                    console.error(`Error fetching YouTube data for video ID ${videoId}:`, error);
+                });
+        } else {
+            console.warn("No video ID found for this video element.");
+        }
+    });
+</script>
+ 
+     <section id="gallery" class="fade-in-up">
+         <h2>Gallery</h2>
+         <div class="gallery-grid">
+             <div class="hover-img">
+                 <img src="images/chicteen1.jpg" class="default-img" alt="Gaeul 1">
+                 <img src="images/chicteen2.jpg" class="hovered-img" alt="Gaeul 1 Hover">
+             </div>
+ 
+             <div class="hover-img">
+                 <img src="images/chicteen2.jpg" class="default-img" alt="Gaeul 1">
+                 <img src="images/chicteen1.jpg" class="hovered-img" alt="Gaeul 1 Hover">
+             </div>
+         </div>
+     </section>
+ 
+     <section id="about" class="about-section fade-in-up">
+         <h2>About</h2>
+         <p>This is a fan-made website dedicated to Kim Gaeul. Information and images are for illustrative purposes only.</p>
+     </section>
+ 
+ <footer>
+     <p>Fanmade for Kim Gaeul — 2025 ©ivegaeul__</p>
+     <a href="#home" class="back-to-top"><img src="images/back-to-top.png" alt="Back to top"></a>
+ 
+ <script>
+     const fadeEls = document.querySelectorAll('.fade-in-up');
+     const backToTopBtn = document.querySelector('.back-to-top');  // Lấy nút
+ 
+     const observer = new IntersectionObserver((entries) => {
+         entries.forEach(entry => {
+             if (entry.isIntersecting) {
+                 entry.target.classList.add('show');
+                 observer.unobserve(entry.target);
+             }
+         });
+     }, { threshold: 0.2 });
+ 
+     fadeEls.forEach(el => observer.observe(el));
+ 
+     // Hiển thị/ẩn nút mũi tên
+     window.addEventListener('scroll', () => {
+         if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200) {  // Gần cuối trang
+             backToTopBtn.style.display = 'block';
+         } else {
+             backToTopBtn.style.display = 'none';
+         }
+     });
+ </script>
+
+
+ <script>
+     document.addEventListener("DOMContentLoaded", function () {
+         const nav = document.querySelector(".nav-container");
+         const toggleBtn = document.createElement("button");
+         toggleBtn.innerHTML = "☰";
+         toggleBtn.className = "nav-toggle";
+         toggleBtn.addEventListener("click", () => {
+             nav.classList.toggle("expanded");
+         });
+         nav.insertBefore(toggleBtn, nav.firstChild);
+     });
+ </script>
+ </body>
+ 
+ </html>
