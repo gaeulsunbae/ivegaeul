@@ -8,37 +8,65 @@
      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;600&display=swap"
          rel="stylesheet">
      <link rel="stylesheet" href="style.css" />
-     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">  </head>
-
+     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+     <script>
+         document.addEventListener("DOMContentLoaded", function () {
+             const nav = document.querySelector(".nav-container");
+             const toggleBtn = document.createElement("button");
+             toggleBtn.innerHTML = "☰";
+             toggleBtn.className = "nav-toggle";
+             toggleBtn.setAttribute('aria-label', 'Menu'); // Accessibility
+             toggleBtn.addEventListener("click", () => {
+                 nav.classList.toggle("expanded");
+             });
+             nav.insertBefore(toggleBtn, nav.firstChild);
+         });
  
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const nav = document.querySelector(".nav-container");
-        const toggleBtn = document.createElement("button");
-        toggleBtn.innerHTML = "☰";
-        toggleBtn.className = "nav-toggle";
-        toggleBtn.addEventListener("click", () => {
-            nav.classList.toggle("expanded");
-        });
-        nav.insertBefore(toggleBtn, nav.firstChild);
-    });
-</script>
-
+         // Lazy loading cho hình ảnh
+         document.addEventListener("DOMContentLoaded", function () {
+             var lazyImages = document.querySelectorAll('img.lazy');
+             var lazyLoad = function (image) {
+                 image.src = image.dataset.src;
+                 image.classList.remove('lazy');
+             };
  
+             if ('IntersectionObserver' in window) {
+                 var lazyImageObserver = new IntersectionObserver(function (entries, observer) {
+                     entries.forEach(function (entry) {
+                         if (entry.isIntersecting) {
+                             var lazyImage = entry.target;
+                             lazyLoad(lazyImage);
+                             lazyImageObserver.unobserve(lazyImage);
+                         }
+                     });
+                 });
+ 
+                 lazyImages.forEach(function (lazyImage) {
+                     lazyImageObserver.observe(lazyImage);
+                 });
+             } else {
+                 // Fallback cho trình duyệt không hỗ trợ IntersectionObserver
+                 lazyImages.forEach(function (lazyImage) {
+                     lazyLoad(lazyImage);
+                 });
+             }
+         });
+     </script>
  </head>
  
  <body>
- <header id="home" class="hero">
-     <img src="https://i.pinimg.com/originals/de/ba/ba/debabaa29d8ccd55352a4a8b3940f5a7.gif" alt="Lấp lánh" class="hero-gif">  <div class="overlay">
-         <img src="images/gaeul-logo.jpg" alt="Gaeul Logo" class="hero-logo fancy-logo" />
-         <div class="hero-caption-container">
-             <h1 class="hero-caption fancy-caption">falling in Fall</h1>
-             <img src="images/signature.png" alt="Gaeul signature" class="signature">
+     <header id="home" class="hero">
+         <img src="https://i.pinimg.com/originals/de/ba/ba/debabaa29d8ccd55352a4a8b3940f5a7.gif" alt="Lấp lánh" class="hero-gif">
+         <div class="overlay">
+             <img src="images/gaeul-logo.jpg" alt="Gaeul Logo" class="hero-logo fancy-logo" />
+             <div class="hero-caption-container">
+                 <h1 class="hero-caption fancy-caption">falling in Fall</h1>
+                 <img src="images/signature.png" alt="Gaeul signature" class="signature">
+             </div>
          </div>
-     </div>
- </header>
+     </header>
  
-     <nav class="nav-container">
+     <nav class="nav-container" aria-label="Main Navigation">
          <a href="#home">Home</a>
          <a href="#profile">Profile</a>
          <a href="#discography">Discography</a>
@@ -50,536 +78,1161 @@
      <section id="profile" class="profile-section fade-in-up">
          <div class="profile-container">
              <div class="profile-image">
-                 <img src="images/all-about-gaeul.jpg" alt="Gaeul">
+                 <img src="images/all-about-gaeul.jpg" alt="Kim Gaeul smiling" class="lazy" data-src="images/all-about-gaeul.jpg">
              </div>
              <div class="profile-info">
                  <h2>Kim Gaeul (22)</h2>
-                 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHNoMHE4MTk1eGt3cTFjOWZodTcxdXdkZ3ZlbzR2ZTN5OGxjMHZwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9NaMJmQoQrKog/giphy.gif" alt="flowers">
+                 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHNoMHE4MTk1eGt3cTFjOWZodTcxdXdkZ3ZlbzR2ZTN5OGxjMHZwZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9NaMJmQoQrKog/giphy.gif"
+                     alt="Flowers GIF">
                  <p>김가을/ ガウル/ 金秋天</p>
                  <p>IVE (Starship Ent.)</p>
-                 <p>2021.12.01</p>
-                 <p>2002.09.24</p>
+                 <p>2021.12.01 (Debut)</p>
+                 <p>2002.09.24 (Birthday)</p>
              </div>
          </div>
      </section>
  
- <section id="discography" class="fade-in-up">
-    <h2>Discography</h2>
-    <img src="https://i.imgur.com/JepMRWk.gif" alt="flowers">
-    <div class="discography-categories">
-        <div class="discography-category">
-            <h3>Single Albums</h3>
-            <div class="album-cards">
-                <div class="album-card">
-                    <img src="images/eleven_album_cover.jfif" alt="ELEVEN">
-                    <div class="album-info">
-                        <h4>ELEVEN</h4>
-                        <p>(The 1st Single Album)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/love_dive_album_cover.jfif" alt="LOVE DIVE">
-                    <div class="album-info">
-                        <h4>LOVE DIVE</h4>
-                        <p>(The 2nd Single Album)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/after_like_album_cover.jfif" alt="After LIKE">
-                    <div class="album-info">
-                        <h4>After LIKE</h4>
-                        <p>(The 3rd Single Album)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="discography-category">
-            <h3>Pre-release Singles</h3>
-            <div class="album-cards">
-                <div class="album-card">
-                    <img src="images/kitsch_cover.jpg" alt="Kitsch">
-                    <div class="album-info">
-                        <h4>Kitsch</h4>
-                        <p>(I'VE IVE)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/either_way_cover.jpg" alt="Either Way">
-                    <div class="album-info">
-                        <h4>Either Way</h4>
-                        <p>(I'VE MINE)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/otr_cover.jpg" alt="Off the Record">
-                    <div class="album-info">
-                        <h4>Off the Record</h4>
-                        <p>(I'VE MINE)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/rebel_heart_cover.jfif" alt="Rebel Heart">
-                    <div class="album-info">
-                        <h4>Rebel Heart</h4>
-                        <p>(IVE EMPATHY)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="discography-category">
-            <h3>Mini Albums (EPs)</h3>
-            <div class="album-cards">
-                <div class="album-card">
-                    <img src="images/ive_mine_cover.jfif" alt="I'VE MINE">
-                    <div class="album-info">
-                        <h4>I'VE MINE</h4>
-                        <p>(The 1st EP)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/ive_switch_cover.jfif" alt="IVE SWITCH">
-                    <div class="album-info">
-                        <h4>IVE SWITCH</h4>
-                        <p>(The 2nd EP)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/ive_empathy_cover.jfif" alt="IVE EMPATHY">
-                    <div class="album-info">
-                        <h4>IVE EMPATHY</h4>
-                        <p>(The 3rd EP)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="discography-category">
-            <h3>Full Album</h3>
-            <div class="album-cards">
-                <div class="album-card">
-                    <img src="images/ive_ive_cover.jfif" alt="I'VE IVE">
-                    <div class="album-info">
-                        <h4>I'VE IVE</h4>
-                        <p>(The 1st Full Album)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="discography-category">
-            <h3>Japanese Albums</h3>
-            <div class="album-cards">
-                <div class="album-card">
-                    <img src="images/eleven_jpn_album_cover.jfif" alt="ELEVEN (Japanese ver.)">
-                    <div class="album-info">
-                        <h4>ELEVEN</h4>
-                        <p>(Japanese ver.)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/love_dive_jp.jfif" alt="LOVE DIVE (Japanese ver.)">
-                    <div class="album-info">
-                        <h4>LOVE DIVE</h4>
-                        <p>(Digital Single)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/wave_cover.jfif" alt="WAVE">
-                    <div class="album-info">
-                        <h4>WAVE</h4>
-                        <p>(IVE JAPAN 1st EP)</p>
-                    </div>
-                </div>
-                <div class="album-card">
-                    <img src="images/alive_cover.jfif" alt="ALIVE">
-                    <div class="album-info">
-                        <h4>ALIVE</h4>
-                        <p>(IVE JAPAN 2nd EP)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="discography-category-container">
-            <div class="discography-category">
-                <h3>English Albums</h3>
-                <div class="album-cards">
-                    <div class="album-card">
-                        <img src="images/all_night_cover.jfif" alt="All Night">
-                        <div class="album-info">
-                            <h4>All Night</h4>
-                            <p>(REMAKE SINGLE)</p>
-                        </div>
-                    </div>
-                    <div class="album-card">
-                        <img src="images/supernova_love_cover.jfif" alt="Supernova Love">
-                        <div class="album-info">
-                            <h4>Supernova Love</h4>
-                            <p>(DIGITAL SINGLE)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="discography-category">
-                <h3>CF Songs</h3>
-                <div class="album-cards">
-                    <div class="album-card">
-                        <img src="images/iwant_cover.jpg" alt="I WANT">
-                        <div class="album-info">
-                            <h4>I WANT</h4>
-                            <p>(IVE x Pepsi)</p>
-                        </div>
-                    </div>
-                    <div class="album-card">
-                        <img src="images/summer_festa_cover.jpg" alt="Summer Festa">
-                        <div class="album-info">
-                            <h4>Summer Festa</h4>
-                            <p>(IVE x Pepsi)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="discography-category">
-                <h3>OST</h3>
-                <div class="album-cards">
-                    <div class="album-card">
-                        <img src="images/will_ost_cover.jpg" alt="WILL">
-                        <div class="album-info">
-                            <h4>WILL</h4>
-                            <p>(Pokemon OST)</p>
-                        </div>
-                    </div>
-                    <div class="album-card">
-                        <img src="images/dare_me_cover.jfif" alt="DARE ME">
-                        <div class="album-info">
-                            <h4>Dare Me</h4>
-                            <p>(Damemane OST)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
- 
-<section id="videos" class="fade-in-up">
-    <h2>VIDEOS</h2>
-    <div class="videos-categories">
-        <div class="videos-category" id="ive-on">
-            <h3>IVE ON</h3>
-            <div class="videos-wrapper">
-                <div class="videos-videos">
-                    <div class="videos-video" data-video-id="Zs27JWKyECQ">
-                        <img src="https://i.ytimg.com/an_webp/Zs27JWKyECQ/mqdefault_6s.webp?du=3000&sqp=CJC-9sAG&rs=AOn4CLDx6or7lJz3JXsRwQIZ9tYqfZcb0g" alt="IVE ON Video 8" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="https://i.ytimg.com/vi/Zs27JWKyECQ/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCqvAlbveoKuVzfOPwO_YWXWGXAaw" alt="IVE ON Video 8 Small" class="small-thumbnail small-thumbnail-3">
-                            <div class="video-text">
-                                <h4 class="video-title">[IVE ON] GAEUL x W.concept with LENINA BEHIND</h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="Mk3KhK7LL4k">
-                        <img src="https://i.ytimg.com/an_webp/Mk3KhK7LL4k/mqdefault_6s.webp?du=3000&sqp=CO-p9sAG&rs=AOn4CLCWgh8LiM6oe40bxjFqz4iytunRdw" alt="IVE ON Video 8" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="https://i.ytimg.com/vi/Mk3KhK7LL4k/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCFxN6EdIqeMXj5OKJL-ttQ4zBY9A" alt="IVE ON Video 8 Small" class="small-thumbnail small-thumbnail-2">
-                            <div class="video-text">
-                                <h4 class="video-title">[IVE ON] GAEUL x ELLE September issue</h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="BXf3XvHK1M8">
-                        <img src="https://i.ytimg.com/an_webp/BXf3XvHK1M8/mqdefault_6s.webp?du=3000&sqp=CIup9sAG&rs=AOn4CLDaRVbu10VkzqlQ0il1y2rDJkDtyQ" alt="IVE ON Video 8" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="https://i.ytimg.com/vi/BXf3XvHK1M8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBz89OB1BYFl3oHJez70ae0ePVEvw" alt="IVE ON Video 8 Small" class="small-thumbnail small-thumbnail-1">
-                            <div class="video-text">
-                                <h4 class="video-title">[IVE ON] W Korea May issue (with GAEUL x REI x LIZ)</h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="pvWKx3jMNjw">
-                        <img src="https://i.ytimg.com/an_webp/pvWKx3jMNjw/mqdefault_6s.webp?du=3000&sqp=CIyP9sAG&rs=AOn4CLBB2i6gTtCJwg_1YPo2lG7ifcPPAQ" alt="IVE ON Video 7" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="https://i.ytimg.com/vi/pvWKx3jMNjw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBe5P4Alyau81lahbhmwFD0i5jVoQ" alt="IVE ON Video 7 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title">[IVE ON] IVE with S Cawaii!</h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="IIKRxq1wnys">
-                        <img src="https://i.ytimg.com/an_webp/IIKRxq1wnys/mqdefault_6s.webp?du=3000&sqp=CPSv9sAG&rs=AOn4CLCH0EiRVFaZrzzthmLrLWVbLH5Obg" alt="IVE ON Video 6" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="https://i.ytimg.com/vi/IIKRxq1wnys/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDRntiBrujY2xzHJZPt1DGzwdobeg" alt="IVE ON Video 6 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title">[IVE ON] IVE with DAZED January issue</h4>
-                                <p class="video-views">Views: 194.104M</p>
-                                <p class="video-published">Published: 2022/05/22</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="videos-category" id="ive-off">
-            <h3>IVE OFF</h3>
-            <div class="videos-wrapper">
-                <div class="videos-videos">
-                    <div class="videos-video" data-video-id="your_ive_off_video_1_id">
-                        <img src="placeholder_ive_off_1.jpg" alt="IVE OFF Video 1" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_ive_off_1.jpg" alt="IVE OFF Video 1 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="your_ive_off_video_2_id">
-                        <img src="placeholder_ive_off_2.jpg" alt="IVE OFF Video 2" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_ive_off_2.jpg" alt="IVE OFF Video 2 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="videos-category" id="ive-log">
-            <h3>IVE LOG</h3>
-            <div class="videos-wrapper">
-                <div class="videos-videos">
-                    <div class="videos-video" data-video-id="your_ive_log_video_1_id">
-                        <img src="placeholder_ive_log_1.jpg" alt="IVE LOG Video 1" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_ive_log_1.jpg" alt="IVE LOG Video 1 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="your_ive_log_video_2_id">
-                        <img src="placeholder_ive_log_2.jpg" alt="IVE LOG Video 2" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_ive_log_2.jpg" alt="IVE LOG Video 2 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="videos-category" id="livestream">
-            <h3>LIVESTREAM</h3>
-            <div class="videos-wrapper">
-                <div class="videos-videos">
-                    <div class="videos-video" data-video-id="your_livestream_video_1_id">
-                        <img src="placeholder_livestream_1.jpg" alt="LIVESTREAM Video 1" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_livestream_1.jpg" alt="LIVESTREAM Video 1 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="your_livestream_video_2_id">
-                        <img src="placeholder_livestream_2.jpg" alt="LIVESTREAM Video 2" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_livestream_2.jpg" alt="LIVESTREAM Video 2 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="videos-category" id="shows">
-            <h3>SHOWS</h3>
-            <div class="videos-wrapper">
-                <div class="videos-videos">
-                    <div class="videos-video" data-video-id="your_shows_video_1_id">
-                        <img src="placeholder_shows_1.jpg" alt="SHOWS Video 1" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_shows_1.jpg" alt="SHOWS Video 1 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="your_shows_video_2_id">
-                        <img src="placeholder_shows_2.jpg" alt="SHOWS Video 2" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_shows_2.jpg" alt="SHOWS Video 2 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="videos-category" id="dive-into-ive">
-            <h3>DIVE INTO IVE</h3>
-            <div class="videos-wrapper">
-                <div class="videos-videos">
-                    <div class="videos-video" data-video-id="your_dive_into_ive_video_1_id">
-                        <img src="placeholder_dive_1.jpg" alt="DIVE INTO IVE Video 1" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_dive_1.jpg" alt="DIVE INTO IVE Video 1 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="videos-video" data-video-id="your_dive_into_ive_video_2_id">
-                        <img src="placeholder_dive_2.jpg" alt="DIVE INTO IVE Video 2" class="main-thumbnail">
-                        <div class="video-details">
-                            <img src="placeholder_dive_2.jpg" alt="DIVE INTO IVE Video 2 Small" class="small-thumbnail">
-                            <div class="video-text">
-                                <h4 class="video-title"></h4>
-                                <p class="video-views">Views: </p>
-                                <p class="video-published">Published: </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-    const apiKey = 'AIzaSyAJ7XdwVgPCMyjeZGJtiRcg_9vvZE98rG4'; // **NHỚ THAY API KEY CỦA BẠN!**
-    const videoElements = document.querySelectorAll('.videos-video');
-
-    videoElements.forEach(videoElement => {
-        const videoId = videoElement.dataset.videoId;
-        const titleElement = videoElement.querySelector('.video-title');
-        const viewsElement = videoElement.querySelector('.video-views');
-        const publishedElement = videoElement.querySelector('.video-published');
-
-        if (videoId) {
-            fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.items && data.items.length > 0) {
-                        const video = data.items[0];
-                        titleElement.textContent = video.snippet.title;
-                        viewsElement.textContent = `Views: ${Number(video.statistics.viewCount).toLocaleString('en-US')}`;
-                        const publishedDate = new Date(video.snippet.publishedAt);
-                        const year = publishedDate.getFullYear();
-                        const month = String(publishedDate.getMonth() + 1).padStart(2, '0');
-                        const day = String(publishedDate.getDate()).padStart(2, '0');
-                        publishedElement.textContent = `Published: ${year}/${month}/${day}`;
-                    } else {
-                        console.warn(`Could not retrieve data for video ID: ${videoId}`);
-                    }
-                })
-                .catch(error => {
-                    console.error(`Error fetching YouTube data for video ID ${videoId}:`, error);
-                });
-        } else {
-            console.warn("No video ID found for this video element.");
-        }
-    });
-</script>
- 
-     <section id="gallery" class="fade-in-up">
-         <h2>Gallery</h2>
-         <div class="gallery-grid">
-             <div class="hover-img">
-                 <img src="images/chicteen1.jpg" class="default-img" alt="Gaeul 1">
-                 <img src="images/chicteen2.jpg" class="hovered-img" alt="Gaeul 1 Hover">
+     <section id="discography" class="fade-in-up">
+         <h2>Discography</h2>
+         <img src="https://i.imgur.com/JepMRWk.gif" alt="Sparkling flowers GIF">
+         <div class="discography-categories">
+             <div class="discography-category">
+                 <h3>Single Albums</h3>
+                 <div class="album-cards">
+                     <div class="album-card">
+                         <img src="images/eleven_album_cover.jfif" alt="ELEVEN album cover" class="lazy" data-src="images/eleven_album_cover.jfif">
+                         <div class="album-info">
+                             <h4>ELEVEN</h4>
+                             <p>(The 1st Single Album)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/love_dive_album_cover.jfif" alt="LOVE DIVE album cover" class="lazy" data-src="images/love_dive_album_cover.jfif">
+                         <div class="album-info">
+                             <h4>LOVE DIVE</h4>
+                             <p>(The 2nd Single Album)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/after_like_album_cover.jfif" alt="After LIKE album cover" class="lazy" data-src="images/after_like_album_cover.jfif">
+                         <div class="album-info">
+                             <h4>After LIKE</h4>
+                             <p>(The 3rd Single Album)</p>
+                         </div>
+                     </div>
+                 </div>
              </div>
  
-             <div class="hover-img">
-                 <img src="images/chicteen2.jpg" class="default-img" alt="Gaeul 1">
-                 <img src="images/chicteen1.jpg" class="hovered-img" alt="Gaeul 1 Hover">
+             <div class="discography-category">
+                 <h3>Pre-release Singles</h3>
+                 <div class="album-cards">
+                     <div class="album-card">
+                         <img src="images/kitsch_cover.jpg" alt="Kitsch single cover" class="lazy" data-src="images/kitsch_cover.jpg">
+                         <div class="album-info">
+                             <h4>Kitsch</h4>
+                             <p>(I'VE IVE)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/either_way_cover.jpg" alt="Either Way single cover" class="lazy" data-src="images/either_way_cover.jpg">
+                         <div class="album-info">
+                             <h4>Either Way</h4>
+                             <p>(I'VE MINE)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/otr_cover.jpg" alt="Off the Record single cover" class="lazy" data-src="images/otr_cover.jpg">
+                         <div class="album-info">
+                             <h4>Off the Record</h4>
+                             <p>(I'VE MINE)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/rebel_heart_cover.jfif" alt="Rebel Heart single cover" class="lazy" data-src="images/rebel_heart_cover.jfif">
+                         <div class="album-info">
+                             <h4>Rebel Heart</h4>
+                             <p>(IVE EMPATHY)</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+ 
+             <div class="discography-category">
+                 <h3>Mini Albums (EPs)</h3>
+                 <div class="album-cards">
+                     <div class="album-card">
+                         <img src="images/ive_mine_cover.jfif" alt="I'VE MINE EP cover" class="lazy" data-src="images/ive_mine_cover.jfif">
+                         <div class="album-info">
+                             <h4>I'VE MINE</h4>
+                             <p>(The 1st EP)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/ive_switch_cover.jfif" alt="IVE SWITCH EP cover" class="lazy" data-src="images/ive_switch_cover.jfif">
+                         <div class="album-info">
+                             <h4>IVE SWITCH</h4>
+                             <p>(The 2nd EP)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/ive_empathy_cover.jfif" alt="IVE EMPATHY EP cover" class="lazy" data-src="images/ive_empathy_cover.jfif">
+                         <div class="album-info">
+                             <h4>IVE EMPATHY</h4>
+                             <p>(The 3rd EP)</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+ 
+             <div class="discography-category">
+                 <h3>Full Album</h3>
+                 <div class="album-cards">
+                     <div class="album-card">
+                         <img src="images/ive_ive_cover.jfif" alt="I'VE IVE full album cover" class="lazy" data-src="images/ive_ive_cover.jfif">
+                         <div class="album-info">
+                             <h4>I'VE IVE</h4>
+                             <p>(The 1st Full Album)</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+ 
+             <div class="discography-category">
+                 <h3>Japanese Albums</h3>
+                 <div class="album-cards">
+                     <div class="album-card">
+                         <img src="images/eleven_jpn_album_cover.jfif" alt="ELEVEN (Japanese ver.) album cover" class="lazy" data-src="images/eleven_jpn_album_cover.jfif">
+                         <div class="album-info">
+                             <h4>ELEVEN</h4>
+                             <p>(Japanese ver.)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/love_dive_jp.jfif" alt="LOVE DIVE (Japanese ver.) single cover" class="lazy" data-src="images/love_dive_jp.jfif">
+                         <div class="album-info">
+                             <h4>LOVE DIVE</h4>
+                             <p>(Digital Single)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/wave_cover.jfif" alt="WAVE EP cover" class="lazy" data-src="images/wave_cover.jfif">
+                         <div class="album-info">
+                             <h4>WAVE</h4>
+                             <p>(IVE JAPAN 1st EP)</p>
+                         </div>
+                     </div>
+                     <div class="album-card">
+                         <img src="images/alive_cover.jfif" alt="ALIVE EP cover" class="lazy" data-src="images/alive_cover.jfif">
+                         <div class="album-info">
+                             <h4>ALIVE</h4>
+                             <p>(IVE JAPAN 2nd EP)</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+ 
+             <div class="discography-category-container">
+                 <div class="discography-category">
+                     <h3>English Albums</h3>
+                     <div class="album-cards">
+                         <div class="album-card">
+                             <img src="images/all_night_cover.jfif" alt="All Night single cover" class="lazy" data-src="images/all_night_cover.jfif">
+                             <div class="album-info">
+                                 <h4>All Night</h4>
+                                 <p>(REMAKE SINGLE)</p>
+                             </div>
+                         </div>
+                         <div class="album-card">
+                             <img src="images/supernova_love_cover.jfif" alt="Supernova Love single cover" class="lazy" data-src="images/supernova_love_cover.jfif">
+                             <div class="album-info">
+                                 <h4>Supernova Love</h4>
+                                 <p>(DIGITAL SINGLE)</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="discography-category">
+                     <h3>CF Songs</h3>
+                     <div class="album-cards">
+                         <div class="album-card">
+                             <img src="images/iwant_cover.jpg" alt="I WANT single cover" class="lazy" data-src="images/iwant_cover.jpg">
+                             <div class="album-info">
+                                 <h4>I WANT</h4>
+                                 <p>(IVE x Pepsi)</p>
+                             </div>
+                         </div>
+                         <div class="album-card">
+                             <img src="images/summer_festa_cover.jpg" alt="Summer Festa single cover" class="lazy" data-src="images/summer_festa_cover.jpg">
+                             <div class="album-info">
+                                 <h4>Summer Festa</h4>
+                                 <p>(IVE x Pepsi)</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="discography-category">
+                     <h3>OST</h3>
+                     <div class="album-cards">
+                         <div class="album-card">
+                             <img src="images/will_ost_cover.jpg" alt="WILL OST cover" class="lazy" data-src="images/will_ost_cover.jpg">
+                             <div class="album-info">
+                                 <h4>WILL</h4>
+                                 <p>(Pokemon OST)</p>
+                             </div>
+                         </div>
+                         <div class="album-card">
+                             <img src="images/dare_me_cover.jfif" alt="DARE ME OST cover" class="lazy" data-src="images/dare_me_cover.jfif">
+                             <div class="album-info">
+                                 <h4>Dare Me</h4>
+                                 <p>(Damemane OST)</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
              </div>
          </div>
      </section>
+ 
+     <section id="videos" class="fade-in-up">
+         <h2>VIDEOS</h2>
+         <div class="videos-categories">
+             <div class="videos-category" id="ive-on">
+                 <h3>IVE ON</h3>
+                 <div class="videos-wrapper">
+                     <div class="videos-videos">
+                       <div class="videos-video" data-video-id="bBZHez6hu4M">
+    <a href="https://youtu.be/bBZHez6hu4M?si=JeV5m30ZzZYIq7pI" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/bBZHez6hu4M/mqdefault_6s.webp?du=3000&sqp=CISVksEG&rs=AOn4CLARC3CNTU77AoexlXa09FB8L6UFYg"
+             alt="[IVE ON] IVE X COSMOPOLITAN X dyson BEHIND thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/bBZHez6hu4M/mqdefault_6s.webp?du=3000&sqp=CISVksEG&rs=AOn4CLARC3CNTU77AoexlXa09FB8L6UFYg">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/bBZHez6hu4M?si=JeV5m30ZzZYIq7pI" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/bBZHez6hu4M/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAsT8KG5NjSZaonrWlXE4vCG1yikw"
+                 alt="[IVE ON] IVE X COSMOPOLITAN X dyson BEHIND small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/bBZHez6hu4M/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAsT8KG5NjSZaonrWlXE4vCG1yikw">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/bBZHez6hu4M?si=JeV5m30ZzZYIq7pI" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE ON] IVE X COSMOPOLITAN X dyson BEHIND</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                       <div class="videos-video" data-video-id="S4P62emGGjk">
+    <a href="https://youtu.be/S4P62emGGjk?si=bg00J-MOLYVXlutl" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/S4P62emGGjk/mqdefault_6s.webp?du=3000&sqp=CJSDksEG&rs=AOn4CLChCcy9OET0XY3HPPOijHGA08rncQ"
+             alt="[IVE ON] IVE with 2024 Papajohns BEHIND thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/S4P62emGGjk/mqdefault_6s.webp?du=3000&sqp=CJSDksEG&rs=AOn4CLChCcy9OET0XY3HPPOijHGA08rncQ">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/S4P62emGGjk?si=bg00J-MOLYVXlutl" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/S4P62emGGjk/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCukfcgyekZdGYQvRVnpODh6ye-WQ"
+                 alt="[IVE ON] IVE with 2024 Papajohns BEHIND small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/S4P62emGGjk/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCukfcgyekZdGYQvRVnpODh6ye-WQ">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/S4P62emGGjk?si=bg00J-MOLYVXlutl" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE ON] IVE with 2024 Papajohns BEHIND</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                       <div class="videos-video" data-video-id="cK505bLpvRg">
+     <a href="https://youtu.be/cK505bLpvRg?si=m3H-oVY9CO7D0YH-" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/cK505bLpvRg/mqdefault_6s.webp?du=3000&sqp=CMj7kcEG&rs=AOn4CLB3WDsPJPYn_TrXQ9uovdRLQlgJ2Q"
+              alt="[IVE ON] IVE with PUMA BEHIND thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/cK505bLpvRg/mqdefault_6s.webp?du=3000&sqp=CMj7kcEG&rs=AOn4CLB3WDsPJPYn_TrXQ9uovdRLQlgJ2Q">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/cK505bLpvRg?si=m3H-oVY9CO7D0YH-" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/cK505bLpvRg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDUiCyRQ7T8Q5tCZjIx1e4wTNnyFA"
+                  alt="[IVE ON] IVE with PUMA BEHIND small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/cK505bLpvRg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDUiCyRQ7T8Q5tCZjIx1e4wTNnyFA">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/cK505bLpvRg?si=m3H-oVY9CO7D0YH-" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE ON] IVE with PUMA BEHIND</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                       <div class="videos-video" data-video-id="y5OXyRzgoQY">
+     <a href="https://youtu.be/y5OXyRzgoQY?si=GRJywrYfjSosDmvf" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/y5OXyRzgoQY/mqdefault_6s.webp?du=3000&sqp=CPaJksEG&rs=AOn4CLAm6qqQjdR9lvSddFceDaN3s7zzDw"
+              alt="[IVE ON] IVE with Kwangdong Oksusu Beard Tea BEHIND thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/y5OXyRzgoQY/mqdefault_6s.webp?du=3000&sqp=CPaJksEG&rs=AOn4CLAm6qqQjdR9lvSddFceDaN3s7zzDw">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/y5OXyRzgoQY?si=GRJywrYfjSosDmvf" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/y5OXyRzgoQY/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAg7XQMc8mMUXHjA9PqSiBokV1WHA"
+                  alt="[IVE ON] IVE with Kwangdong Oksusu Beard Tea BEHIND small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/y5OXyRzgoQY/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAg7XQMc8mMUXHjA9PqSiBokV1WHA">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/y5OXyRzgoQY?si=GRJywrYfjSosDmvf" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE ON] IVE with Kwangdong Oksusu Beard Tea BEHIND</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                       <div class="videos-video" data-video-id="jTw-1XMuBm4">
+     <a href="https://youtu.be/jTw-1XMuBm4?si=anB7UmfDFeX3Ug-K" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/jTw-1XMuBm4/mqdefault_6s.webp?du=3000&sqp=CKbckcEG&rs=AOn4CLARFG3bIr0_etBAmPtikTUH_sf0oQ"
+              alt="[IVE ON] IVE with Vivi March thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/jTw-1XMuBm4/mqdefault_6s.webp?du=3000&sqp=CKbckcEG&rs=AOn4CLARFG3bIr0_etBAmPtikTUH_sf0oQ">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/jTw-1XMuBm4?si=anB7UmfDFeX3Ug-K" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/jTw-1XMuBm4/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDSF5LBhvvurYCowflyMC3aviA-HQ"
+                  alt="[IVE ON] IVE with Vivi March small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/jTw-1XMuBm4/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDSF5LBhvvurYCowflyMC3aviA-HQ">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/jTw-1XMuBm4?si=anB7UmfDFeX3Ug-K" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE ON] IVE with Vivi March</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                        <div class="videos-video" data-video-id="jvkLxsnw4k8">
+     <a href="https://youtu.be/jvkLxsnw4k8?si=aDdvbvo_fZjG-vdv" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/jvkLxsnw4k8/mqdefault_6s.webp?du=3000&sqp=CJCbksEG&rs=AOn4CLBKtgVmKQBViUD0s3bGjZAdlNCuGQ"
+              alt="[IVE ON] IVE with Papajohns BEHIND thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/jvkLxsnw4k8/mqdefault_6s.webp?du=3000&sqp=CJCbksEG&rs=AOn4CLBKtgVmKQBViUD0s3bGjZAdlNCuGQ">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/jvkLxsnw4k8?si=aDdvbvo_fZjG-vdv" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/jvkLxsnw4k8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCwVIHvKRfXBGMrFtSSxyobrjKHmw"
+                  alt="[IVE ON] IVE with Papajohns BEHIND small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/jvkLxsnw4k8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCwVIHvKRfXBGMrFtSSxyobrjKHmw">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/jvkLxsnw4k8?si=aDdvbvo_fZjG-vdv" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE ON] IVE with Papajohns BEHIND</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                         <div class="videos-video" data-video-id="mb6aIjZRUcg">
+                             <a href="https://www.youtube.com/watch?v=mb6aIjZRUcg&list=PLPhtNKiHTFyqlEdNLSkiXm6U6HDyxQOJW&index=101" target="_blank" rel="noopener noreferrer">
+                                 <img src="https://i.ytimg.com/an_webp/mb6aIjZRUcg/mqdefault_6s.webp?du=3000&sqp=CPiHksEG&rs=AOn4CLBQ2UGrMXK_CDTgAvA4Vxph0R9bjQ"
+                                     alt="[IVE ON] IVE with VOGUE 1월 호 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/mb6aIjZRUcg/mqdefault_6s.webp?du=3000&sqp=CPiHksEG&rs=AOn4CLBQ2UGrMXK_CDTgAvA4Vxph0R9bjQ">
+                             </a>
+                             <div class="video-details">
+                                 <a href="https://www.youtube.com/watch?v=mb6aIjZRUcg&list=PLPhtNKiHTFyqlEdNLSkiXm6U6HDyxQOJW&index=101" target="_blank"
+                                     rel="noopener noreferrer">
+                                     <img src="https://i.ytimg.com/vi/mb6aIjZRUcg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCIwr4fvG3LrgK_bnNr3w9xQCtjqA"
+                                         alt="[IVE ON] IVE with VOGUE 1월 호 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/mb6aIjZRUcg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCIwr4fvG3LrgK_bnNr3w9xQCtjqA">
+                                 </a>
+                                 <div class="video-text">
+                                     <a href="https://www.youtube.com/watch?v=mb6aIjZRUcg&list=PLPhtNKiHTFyqlEdNLSkiXm6U6HDyxQOJW&index=101" target="_blank"
+                                         rel="noopener noreferrer">
+                                         <h4 class="video-title">[IVE ON] IVE with VOGUE 1월 호</h4>
+                                     </a>
+                                     <p class="video-views">Views: </p>
+                                     <p class="video-published">Published: </p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="videos-video" data-video-id="Zs27JWKyECQ">
+                             <a href="https://www.youtube.com/watch?v=Zs27JWKyECQ" target="_blank" rel="noopener noreferrer">
+                                 <img src="https://i.ytimg.com/an_webp/Zs27JWKyECQ/mqdefault_6s.webp?du=3000&sqp=CKzhkcEG&rs=AOn4CLBw8HVgXXXc64BjI5BobwmRxIpo7Q"
+                                     alt="[IVE ON] GAEUL x W.concept with LENINA BEHIND thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/Zs27JWKyECQ/mqdefault_6s.webp?du=3000&sqp=CKzhkcEG&rs=AOn4CLBw8HVgXXXc64BjI5BobwmRxIpo7Q">
+                             </a>
+                             <div class="video-details">
+                                 <a href="https://www.youtube.com/watch?v=Zs27JWKyECQ" target="_blank"
+                                     rel="noopener noreferrer">
+                                     <img src="https://i.ytimg.com/vi/Zs27JWKyECQ/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCqvAlbveoKuVzfOPwO_YWXWGXAaw"
+                                         alt="[IVE ON] GAEUL x W.concept with LENINA BEHIND small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/Zs27JWKyECQ/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCqvAlbveoKuVzfOPwO_YWXWGXAaw">
+                                 </a>
+                                 <div class="video-text">
+                                     <a href="https://www.youtube.com/watch?v=Zs27JWKyECQ" target="_blank"
+                                         rel="noopener noreferrer">
+                                         <h4 class="video-title">[IVE ON] GAEUL x W.concept with LENINA BEHIND</h4>
+                                     </a>
+                                     <p class="video-views">Views: </p>
+                                     <p class="video-published">Published: </p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="videos-video" data-video-id="Mk3KhK7LL4k">
+                             <a href="https://www.youtube.com/watch?v=Mk3KhK7LL4k" target="_blank" rel="noopener noreferrer">
+                                 <img src="https://i.ytimg.com/an_webp/Mk3KhK7LL4k/mqdefault_6s.webp?du=3000&sqp=CJKXksEG&rs=AOn4CLBzuc6ZmtOwPHnStU3N0J0dBwPKxA"
+                                     alt="[IVE ON] GAEUL x ELLE September issue thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/Mk3KhK7LL4k/mqdefault_6s.webp?du=3000&sqp=CJKXksEG&rs=AOn4CLBzuc6ZmtOwPHnStU3N0J0dBwPKxA">
+                             </a>
+                             <div class="video-details">
+                                 <a href="https://www.youtube.com/watch?v=Mk3KhK7LL4k" target="_blank"
+                                     rel="noopener noreferrer">
+                                     <img src="https://i.ytimg.com/vi/Mk3KhK7LL4k/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCFxN6EdIqeMXj5OKJL-ttQ4zBY9A"
+                                         alt="[IVE ON] GAEUL x ELLE September issue small thumbnail" class="small-thumbnail small-thumbnail-2 lazy" data-src="https://i.ytimg.com/vi/Mk3KhK7LL4k/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCFxN6EdIqeMXj5OKJL-ttQ4zBY9A">
+                                 </a>
+                                 <div class="video-text">
+                                     <a href="https://www.youtube.com/watch?v=Mk3KhK7LL4k" target="_blank"
+                                         rel="noopener noreferrer">
+                                         <h4 class="video-title">[IVE ON] GAEUL x ELLE September issue</h4>
+                                     </a>
+                                     <p class="video-views">Views: </p>
+                                     <p class="video-published">Published: </p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="videos-video" data-video-id="BXf3XvHK1M8">
+                             <a href="https://www.youtube.com/watch?v=BXf3XvHK1M8" target="_blank" rel="noopener noreferrer">
+                                 <img src="https://i.ytimg.com/an_webp/BXf3XvHK1M8/mqdefault_6s.webp?du=3000&sqp=CJ6ZksEG&rs=AOn4CLBwDlJr0faNOD5khSbx5rN2euq0sg"
+                                     alt="[IVE ON] W Korea May issue (with GAEUL x REI x LIZ) thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/BXf3XvHK1M8/mqdefault_6s.webp?du=3000&sqp=CJ6ZksEG&rs=AOn4CLBwDlJr0faNOD5khSbx5rN2euq0sg">
+                             </a>
+                             <div class="video-details">
+                                 <a href="https://www.youtube.com/watch?v=BXf3XvHK1M8" target="_blank"
+                                     rel="noopener noreferrer">
+                                     <img src="https://i.ytimg.com/vi/BXf3XvHK1M8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBz89OB1BYFl3oHJez70ae0ePVEvw"
+                                         alt="[IVE ON] W Korea May issue (with GAEUL x REI x LIZ) small thumbnail" class="small-thumbnail small-thumbnail-1 lazy" data-src="https://i.ytimg.com/vi/BXf3XvHK1M8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBz89OB1BYFl3oHJez70ae0ePVEvw">
+                                 </a>
+                                 <div class="video-text">
+                                     <a href="https://www.youtube.com/watch?v=BXf3XvHK1M8" target="_blank"
+                                         rel="noopener noreferrer">
+                                         <h4 class="video-title">[IVE ON] W Korea May issue (with GAEUL x REI x LIZ)</h4>
+                                     </a>
+                                     <p class="video-views">Views: </p>
+                                     <p class="video-published">Published: </p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="videos-video" data-video-id="pvWKx3jMNjw">
+                             <a href="https://www.youtube.com/watch?v=pvWKx3jMNjw" target="_blank" rel="noopener noreferrer">
+                                 <img src="https://i.ytimg.com/an_webp/pvWKx3jMNjw/mqdefault_6s.webp?du=3000&sqp=CJicksEG&rs=AOn4CLCilssTH2DatxyDy8lr43xAV18GEA"
+                                     alt="[IVE ON] IVE with S Cawaii! thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/pvWKx3jMNjw/mqdefault_6s.webp?du=3000&sqp=CJicksEG&rs=AOn4CLCilssTH2DatxyDy8lr43xAV18GEA">
+                             </a>
+                             <div class="video-details">
+                                 <a href="https://www.youtube.com/watch?v=pvWKx3jMNjw" target="_blank"
+                                     rel="noopener noreferrer">
+                                     <img src="https://i.ytimg.com/vi/pvWKx3jMNjw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBe5P4Alyau81lahbhmwFD0i5jVoQ"
+                                         alt="[IVE ON] IVE with S Cawaii! small thumbnail" class="small-thumbnail lazy" data-src="https://i.ytimg.com/vi/pvWKx3jMNjw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBe5P4Alyau81lahbhmwFD0i5jVoQ">
+                                 </a>
+                                 <div class="video-text">
+                                     <a href="https://www.youtube.com/watch?v=pvWKx3jMNjw" target="_blank"
+                                         rel="noopener noreferrer">
+                                         <h4 class="video-title">[IVE ON] IVE with S Cawaii!</h4>
+                                     </a>
+                                     <p class="video-views">Views: </p>
+                                     <p class="video-published">Published: </p>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="videos-video" data-video-id="IIKRxq1wnys">
+                             <a href="https://www.youtube.com/watch?v=IIKRxq1wnys" target="_blank" rel="noopener noreferrer">
+                                 <img src="https://i.ytimg.com/an_webp/IIKRxq1wnys/mqdefault_6s.webp?du=3000&sqp=CL2RksEG&rs=AOn4CLBAfDGgeN3lrriEo6xyUWUDEv65qg"
+                                     alt="[IVE ON] IVE with DAZED January issue thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/IIKRxq1wnys/mqdefault_6s.webp?du=3000&sqp=CL2RksEG&rs=AOn4CLBAfDGgeN3lrriEo6xyUWUDEv65qg">
+                             </a>
+                             <div class="video-details">
+                                 <a href="https://www.youtube.com/watch?v=IIKRxq1wnys" target="_blank"
+                                     rel="noopener noreferrer">
+                                     <img src="https://i.ytimg.com/vi/IIKRxq1wnys/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDRntiBrujY2xzHJZPt1DGzwdobeg"
+                                         alt="[IVE ON] IVE with DAZED January issue small thumbnail" class="small-thumbnail lazy" data-src="https://i.ytimg.com/vi/IIKRxq1wnys/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDRntiBrujY2xzHJZPt1DGzwdobeg">
+                                 </a>
+                                 <div class="video-text">
+                                     <a href="https://www.youtube.com/watch?v=IIKRxq1wnys" target="_blank"
+                                         rel="noopener noreferrer">
+                                         <h4 class="video-title">[IVE ON] IVE with DAZED January issue</h4>
+                                     </a>
+                                     <p class="video-views">Views: 194.104M</p>
+                                     <p class="video-published">Published: 2022/05/22</p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+           
+             <div class="videos-category" id="ive-off">
+                <h3>IVE OFF</h3>
+                <div class="videos-wrapper">
+                  <div class="videos-videos">
+                    <div class="videos-video" data-video-id="6ztiULeEphI">
+    <a href="https://youtu.be/6ztiULeEphI?si=h_GfZv7wJK-AHqkQ" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/6ztiULeEphI/mqdefault_6s.webp?du=3000&sqp=CPCFksEG&rs=AOn4CLDgcHpPEoesLVtnTSOx0idZYe-qjw"
+             alt="[IVE OFF] Jebal Pophyeojwo〰️ Doll 뽑기 🧸 in Hong Kong thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/6ztiULeEphI/mqdefault_6s.webp?du=3000&sqp=CPCFksEG&rs=AOn4CLDgcHpPEoesLVtnTSOx0idZYe-qjw">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/6ztiULeEphI?si=h_GfZv7wJK-AHqkQ" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/6ztiULeEphI/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA43ZkvvB5CVvqf6ZbdfNl_fIo9zg"
+                 alt="[IVE OFF] Jebal Pophyeojwo 〰️ Doll 뽑기 🧸 in Hong Kong small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/6ztiULeEphI/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA43ZkvvB5CVvqf6ZbdfNl_fIo9zg">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/6ztiULeEphI?si=h_GfZv7wJK-AHqkQ" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE OFF] Jebal Pophyeojwo 〰️ Doll 뽑기 🧸 in Hong Kong</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="k7mn9bvJwq0">
+    <a href="https://youtu.be/k7mn9bvJwq0?si=GD_ZfE5ttn8qholB" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/k7mn9bvJwq0/mqdefault_6s.webp?du=3000&sqp=CMiRksEG&rs=AOn4CLCBf3glDI-YHjFN6tZcyBzBp1LTng"
+             alt="GAEUL's Sokmaeum Cam 🎥 | THE 1ST WORLD TOUR ＜SHOW WHAT I HAVE＞ thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/k7mn9bvJwq0/mqdefault_6s.webp?du=3000&sqp=CMiRksEG&rs=AOn4CLCBf3glDI-YHjFN6tZcyBzBp1LTng">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/k7mn9bvJwq0?si=GD_ZfE5ttn8qholB" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/k7mn9bvJwq0/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDelcmvFEIRas8ILkN3-Rtk4M_nyg"
+                 alt="GAEUL's Sokmaeum Cam 🎥 | THE 1ST WORLD TOUR ＜SHOW WHAT I HAVE＞ small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/k7mn9bvJwq0/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDelcmvFEIRas8ILkN3-Rtk4M_nyg">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/k7mn9bvJwq0?si=GD_ZfE5ttn8qholB" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">GAEUL's Sokmaeum Cam 🎥 | THE 1ST WORLD TOUR ＜SHOW WHAT I HAVE＞</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="V_FUOC7Pp5E">
+    <a href="https://youtu.be/V_FUOC7Pp5E?si=FrTbWvg5nHW3cAez" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/V_FUOC7Pp5E/mqdefault_6s.webp?du=3000&sqp=CIjHkcEG&rs=AOn4CLCb8GrNxl_WwtbhxhBBwiEarzihUA"
+             alt="[IVE OFF] Ttorang Chigo Hansik Meokgo 🍚 IVE's Bowling Showdown 🎳 in USA thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/V_FUOC7Pp5E/mqdefault_6s.webp?du=3000&sqp=CIjHkcEG&rs=AOn4CLCb8GrNxl_WwtbhxhBBwiEarzihUA">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/V_FUOC7Pp5E?si=FrTbWvg5nHW3cAez" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/V_FUOC7Pp5E/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDXBPcn8bnR08W1xslV8sVDj_qK2w"
+                 alt="[IVE OFF] Ttorang Chigo Hansik Meokgo 🍚 IVE's Bowling Showdown 🎳 in USA small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/V_FUOC7Pp5E/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDXBPcn8bnR08W1xslV8sVDj_qK2w">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/V_FUOC7Pp5E?si=FrTbWvg5nHW3cAez" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE OFF] Ttorang Chigo Hansik Meokgo 🍚 IVE's Bowling Showdown 🎳 in USA</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="8vmRwEvUGh8">
+    <a href="https://youtu.be/8vmRwEvUGh8?si=9GXdlDJ4GDY42tvp" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/8vmRwEvUGh8/mqdefault_6s.webp?du=3000&sqp=CM7hkcEG&rs=AOn4CLAWv6mlRwIDUMtCOqOcIdHtLJirWA"
+             alt="[IVE OFF] IVE's Aquarium Outing 🐠 in Georgia Aquarium thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/8vmRwEvUGh8/mqdefault_6s.webp?du=3000&sqp=CM7hkcEG&rs=AOn4CLAWv6mlRwIDUMtCOqOcIdHtLJirWA">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/8vmRwEvUGh8?si=9GXdlDJ4GDY42tvp" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/8vmRwEvUGh8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCXMVojP_Agd--SpLQPg44zD6Jwcg"
+                 alt="[IVE OFF] IVE's Aquarium Outing 🐠 in Georgia Aquarium small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/8vmRwEvUGh8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCXMVojP_Agd--SpLQPg44zD6Jwcg">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/8vmRwEvUGh8?si=9GXdlDJ4GDY42tvp" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE OFF] IVE's Aquarium Outing 🐠 in Georgia Aquarium</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="uz58DwzFma8">
+    <a href="https://youtu.be/uz58DwzFma8?si=-mY2Gswtylisqteg" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/uz58DwzFma8/mqdefault_6s.webp?du=3000&sqp=CPPJkcEG&rs=AOn4CLAi-NbKok5SPrAlqgPKZYjRo5Se0w"
+             alt="[IVE OFF] Bapsimjeu's 🥘 Bapsim Expedition 🍚 in LA thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/uz58DwzFma8/mqdefault_6s.webp?du=3000&sqp=CPPJkcEG&rs=AOn4CLAi-NbKok5SPrAlqgPKZYjRo5Se0w">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/uz58DwzFma8?si=-mY2Gswtylisqteg" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/uz58DwzFma8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDU4nLY44U6gPX9hpi-QBiL7WlLeg"
+                 alt="[IVE OFF] Bapsimjeu's 🥘 Bapsim Expedition 🍚 in LA small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/uz58DwzFma8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDU4nLY44U6gPX9hpi-QBiL7WlLeg">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/uz58DwzFma8?si=-mY2Gswtylisqteg" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE OFF] Bapsimjeu's 🥘 Bapsim Expedition 🍚 in LA</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="ZMsFtOujEWA">
+    <a href="https://youtu.be/ZMsFtOujEWA?si=fjEItb4feqHORb2h" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/ZMsFtOujEWA/mqdefault_6s.webp?du=3000&sqp=CKDxkcEG&rs=AOn4CLC8jLDxTsXS42F5tODdnrxd--rV_g"
+             alt="[IVE OFF] Danjangs' 💞Pink Picnic💞 in LA (with GAEUL x JANGWONYOUNG) thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/ZMsFtOujEWA/mqdefault_6s.webp?du=3000&sqp=CKDxkcEG&rs=AOn4CLC8jLDxTsXS42F5tODdnrxd--rV_g">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/ZMsFtOujEWA?si=fjEItb4feqHORb2h" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/ZMsFtOujEWA/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAHw8HYaqonyhWMZQZ-RKDciyK2Mw"
+                 alt="[IVE OFF] Danjangs' 💞Pink Picnic💞 in LA (with GAEUL x JANGWONYOUNG) small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/ZMsFtOujEWA/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAHw8HYaqonyhWMZQZ-RKDciyK2Mw">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/ZMsFtOujEWA?si=fjEItb4feqHORb2h" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE OFF] Danjangs' 💞Pink Picnic💞 in LA (with GAEUL x JANGWONYOUNG)</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="dwK-G3uCdxU">
+    <a href="https://youtu.be/dwK-G3uCdxU?si=RuwhVm1IIbhsEuiQ" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/dwK-G3uCdxU/mqdefault_6s.webp?du=3000&sqp=COivkcEG&rs=AOn4CLBGsS5LGx7BdUTcX1D7dkbE7AzCmg"
+             alt="[IVE OFF] Binggeul Binggeul Doraganeun Polkiui Donki Tour thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/dwK-G3uCdxU/mqdefault_6s.webp?du=3000&sqp=COivkcEG&rs=AOn4CLBGsS5LGx7BdUTcX1D7dkbE7AzCmg">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/dwK-G3uCdxU?si=RuwhVm1IIbhsEuiQ" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/dwK-G3uCdxU/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCoXtRoIjWxFuPJW2Zu8OQzC6lnew"
+                 alt="[IVE OFF] Binggeul Binggeul Doraganeun Polkiui Donki Tour small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/dwK-G3uCdxU/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLCoXtRoIjWxFuPJW2Zu8OQzC6lnew">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/dwK-G3uCdxU?si=RuwhVm1IIbhsEuiQ" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE OFF] Binggeul Binggeul Doraganeun Polkiui Donki Tour</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="Ilm98-DuhZ8">
+    <a href="https://youtu.be/Ilm98-DuhZ8?si=jNIuufRqJbnu-KOl" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/Ilm98-DuhZ8/mqdefault_6s.webp?du=3000&sqp=CIjZkcEG&rs=AOn4CLCfDxC0UVgUZm5PoUXgKjH3Z7iTZA"
+             alt="[IVE OFF] TikTok challenge (with GAEUL x LEESEO) thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/Ilm98-DuhZ8/mqdefault_6s.webp?du=3000&sqp=CIjZkcEG&rs=AOn4CLCfDxC0UVgUZm5PoUXgKjH3Z7iTZA">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/Ilm98-DuhZ8?si=jNIuufRqJbnu-KOl" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/Ilm98-DuhZ8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAMF2k8yC3ZNONEs0AiXRcAkcVsgA"
+                 alt="[IVE OFF] TikTok challenge (with GAEUL x LEESEO) small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/Ilm98-DuhZ8/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAMF2k8yC3ZNONEs0AiXRcAkcVsgA">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/Ilm98-DuhZ8?si=jNIuufRqJbnu-KOl" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE OFF] TikTok challenge (with GAEUL x LEESEO)</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                  </div>
+                </div>
+              </div>
+           
+             <div class="videos-category" id="ive-off">
+                <h3>IVE LOG</h3>
+                <div class="videos-wrapper">
+                  <div class="videos-videos">
+                    <div class="videos-video" data-video-id="80YE_wLoGtI">  <a href="https://youtu.be/80YE_wLoGtI?si=yAxtbP3YguxYHJuu" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/80YE_wLoGtI/mqdefault_6s.webp?du=3000&sqp=CLa7kcEG&rs=AOn4CLCbePW41nlbTwOazIG5kDgdBj7q_Q"
+              alt="[IVE LOG] Gidaryeotji? Gaeul Seonbae-ui TKO Anmu V-Log Dochak 🖐 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/80YE_wLoGtI/mqdefault_6s.webp?du=3000&sqp=CLa7kcEG&rs=AOn4CLCbePW41nlbTwOazIG5kDgdBj7q_Q">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/80YE_wLoGtI?si=yAxtbP3YguxYHJuu" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/80YE_wLoGtI/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD8hKoWxrDHoUQVNAMmvQaPhfbFNg"
+                  alt="[IVE LOG] Gidaryeotji? Gaeul Seonbae-ui TKO Anmu V-Log Dochak 🖐 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/80YE_wLoGtI/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD8hKoWxrDHoUQVNAMmvQaPhfbFNg">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/80YE_wLoGtI?si=yAxtbP3YguxYHJuu" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE LOG] Gidaryeotji? Gaeul Seonbae-ui TKO Anmu V-Log Dochak 🖐</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                    <div class="videos-video" data-video-id="TSSTSeV1tKM">  <a href="https://youtu.be/TSSTSeV1tKM?si=46lEO6YDHVG6Ufsj" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/TSSTSeV1tKM/mqdefault_6s.webp?du=3000&sqp=CIfrkcEG&rs=AOn4CLANshb1n9DKyYstchGBzSTAxTs22w"
+              alt="[IVE LOG] Jogak Jogak V-Log in WORLD TOUR #2 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/TSSTSeV1tKM/mqdefault_6s.webp?du=3000&sqp=CIfrkcEG&rs=AOn4CLANshb1n9DKyYstchGBzSTAxTs22w">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/TSSTSeV1tKM?si=46lEO6YDHVG6Ufsj" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/TSSTSeV1tKM/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBnQ6fkZdkXBPTw8WsigbFBVX3uUg"
+                  alt="[IVE LOG] Jogak Jogak V-Log in WORLD TOUR #2 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/TSSTSeV1tKM/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLBnQ6fkZdkXBPTw8WsigbFBVX3uUg">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/TSSTSeV1tKM?si=46lEO6YDHVG6Ufsj" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE LOG] Jogak Jogak V-Log in WORLD TOUR #2</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                    <div class="videos-video" data-video-id="7Z5YLYgifKY">  <a href="https://youtu.be/7Z5YLYgifKY?si=MWh9aT9hop3_VANc" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/7Z5YLYgifKY/mqdefault_6s.webp?du=3000&sqp=CMTukcEG&rs=AOn4CLDbpxMgcBRqmBiKum4nXmNmG0T8PQ"
+              alt="[IVE LOG] Jogak Jogak V-Log in WORLD TOUR #1 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/7Z5YLYgifKY/mqdefault_6s.webp?du=3000&sqp=CMTukcEG&rs=AOn4CLDbpxMgcBRqmBiKum4nXmNmG0T8PQ">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/7Z5YLYgifKY?si=MWh9aT9hop3_VANc" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/7Z5YLYgifKY/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA8GG_0zrm3ojVbCGMJYdpVPOBYoQ"
+                  alt="[IVE LOG] Jogak Jogak V-Log in WORLD TOUR #1 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/7Z5YLYgifKY/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLA8GG_0zrm3ojVbCGMJYdpVPOBYoQ">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/7Z5YLYgifKY?si=MWh9aT9hop3_VANc" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE LOG] Jogak Jogak V-Log in WORLD TOUR #1</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                    <div class="videos-video" data-video-id="BifviI5FOAA">  <a href="https://youtu.be/BifviI5FOAA?si=KGn0aMrnfHAMrIiz" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/BifviI5FOAA/mqdefault_6s.webp?du=3000&sqp=CMDokcEG&rs=AOn4CLAZ2IpEaNA2AYZlFWBgWC9jX9_K7Q"
+              alt="[IVE LOG] Nangman-ui Yeoja Europe-e Gada 🌹｜FALL LOG thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/BifviI5FOAA/mqdefault_6s.webp?du=3000&sqp=CMDokcEG&rs=AOn4CLAZ2IpEaNA2AYZlFWBgWC9jX9_K7Q">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/BifviI5FOAA?si=KGn0aMrnfHAMrIiz" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/BifviI5FOAA/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDT3c52D-nYTUqWMq0jKuY8IV01hw"
+                  alt="[IVE LOG] Nangman-ui Yeoja Europe-e Gada 🌹｜FALL LOG small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/BifviI5FOAA/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDT3c52D-nYTUqWMq0jKuY8IV01hw">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/BifviI5FOAA?si=KGn0aMrnfHAMrIiz" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE LOG] Nangman-ui Yeoja Europe-e Gada 🌹｜FALL LOG</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                    <div class="videos-video" data-video-id="6r_2DFSR8Cg">  <a href="https://youtu.be/6r_2DFSR8Cg?si=8_vk1_Fwz-k01PdF" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/6r_2DFSR8Cg/mqdefault_6s.webp?du=3000&sqp=COi1kcEG&rs=AOn4CLAyc40yz7CkC6ikZfWmP-Lz-15Mqw"
+              alt="[IVE LOG] Jogak Jogak V-Log in USA #1 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/6r_2DFSR8Cg/mqdefault_6s.webp?du=3000&sqp=COi1kcEG&rs=AOn4CLAyc40yz7CkC6ikZfWmP-Lz-15Mqw">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/6r_2DFSR8Cg?si=8_vk1_Fwz-k01PdF" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/6r_2DFSR8Cg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDHNOeD-h8KOJCdZzUtQV4klAhUwQ"
+                  alt="[IVE LOG] Jogak Jogak V-Log in USA #1 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/6r_2DFSR8Cg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDHNOeD-h8KOJCdZzUtQV4klAhUwQ">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/6r_2DFSR8Cg?si=8_vk1_Fwz-k01PdF" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE LOG] Jogak Jogak V-Log in USA #1</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                    <div class="videos-video" data-video-id="BPNbgte8-PI">  <a href="https://youtu.be/BPNbgte8-PI?si=cLrgEMWFuvPInS_R" target="_blank" rel="noopener noreferrer">
+         <img src="https://i.ytimg.com/an_webp/BPNbgte8-PI/mqdefault_6s.webp?du=3000&sqp=CLLPkcEG&rs=AOn4CLA3ZeBmKNSYUuaz9qs2SAkYtQmqvw"
+              alt="[IVE LOG] IVE in Spain🇪🇸 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/BPNbgte8-PI/mqdefault_6s.webp?du=3000&sqp=CLLPkcEG&rs=AOn4CLA3ZeBmKNSYUuaz9qs2SAkYtQmqvw">
+     </a>
+     <div class="video-details">
+         <a href="https://youtu.be/BPNbgte8-PI?si=cLrgEMWFuvPInS_R" target="_blank"
+              rel="noopener noreferrer">
+             <img src="https://i.ytimg.com/vi/BPNbgte8-PI/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAWDZSFbJrLhEgzHS_EHU960N4OAQ"
+                  alt="[IVE LOG] IVE in Spain🇪🇸 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/BPNbgte8-PI/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAWDZSFbJrLhEgzHS_EHU960N4OAQ">
+         </a>
+         <div class="video-text">
+             <a href="https://youtu.be/BPNbgte8-PI?si=cLrgEMWFuvPInS_R" target="_blank"
+                  rel="noopener noreferrer">
+                 <h4 class="video-title">[IVE LOG] IVE in Spain🇪🇸</h4>
+             </a>
+             <p class="video-views">Views: </p>
+             <p class="video-published">Published: </p>
+         </div>
+     </div>
+ </div>
+                    <div class="videos-video" data-video-id="2Zrcj0x7WPk">
+    <a href="https://youtu.be/2Zrcj0x7WPk?si=ZGHL6lY9NKTel7Ii" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/2Zrcj0x7WPk/mqdefault_6s.webp?du=3000&sqp=CObMkcEG&rs=AOn4CLA78Iwjh5xY1_J7ZTQ_fTevjvre0w"
+             alt="[IVE LOG] Healing 🌱 V-Log in anji alass ｜FALL LOG thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/2Zrcj0x7WPk/mqdefault_6s.webp?du=3000&sqp=CObMkcEG&rs=AOn4CLA78Iwjh5xY1_J7ZTQ_fTevjvre0w">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/2Zrcj0x7WPk?si=ZGHL6lY9NKTel7Ii" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/2Zrcj0x7WPk/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDW9ySgFbTPq3ZCAHWT64bCnvESOw"
+                 alt="[IVE LOG] Healing 🌱 V-Log in anji alass ｜FALL LOG small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/2Zrcj0x7WPk/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDW9ySgFbTPq3ZCAHWT64bCnvESOw">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/2Zrcj0x7WPk?si=ZGHL6lY9NKTel7Ii" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE LOG] Healing 🌱 V-Log in anji alass ｜FALL LOG</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                    <div class="videos-video" data-video-id="YYY2Kwf24-0">
+    <a href="https://youtu.be/YYY2Kwf24-0?si=uV_IzuNlYGIHLMbY" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/YYY2Kwf24-0/mqdefault_6s.webp?du=3000&sqp=CLXEkcEG&rs=AOn4CLCzrJU2ptB3FM3zlTe1qdNqxnPE2A"
+             alt="[IVE LOG] Gaeul Gamseong Gadeukhan 🍁｜FALL LOG thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/YYY2Kwf24-0/mqdefault_6s.webp?du=3000&sqp=CLXEkcEG&rs=AOn4CLCzrJU2ptB3FM3zlTe1qdNqxnPE2A">
+    </a>
+    <div class="video-details">
+        <a href="https://youtu.be/YYY2Kwf24-0?si=uV_IzuNlYGIHLMbY" target="_blank"
+             rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/YYY2Kwf24-0/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDl7KC3LSqks-1otvSdRqsYe_OK7g"
+                 alt="[IVE LOG] Gaeul Gamseong Gadeukhan 🍁｜FALL LOG small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/YYY2Kwf24-0/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLDl7KC3LSqks-1otvSdRqsYe_OK7g">
+        </a>
+        <div class="video-text">
+            <a href="https://youtu.be/YYY2Kwf24-0?si=uV_IzuNlYGIHLMbY" target="_blank"
+                 rel="noopener noreferrer">
+                <h4 class="video-title">[IVE LOG] Gaeul Gamseong Gadeukhan 🍁｜FALL LOG</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+                  </div>
+                </div>
+              </div>
+
+             <div class="videos-category" id="ive-off">
+                <h3>LIVE STREAM</h3>
+                <div class="videos-wrapper">
+                  <div class="videos-videos">
+                        
+                        <div class="videos-video" data-video-id="zPerS8-LOFs">
+    <a href="https://www.youtube.com/live/zPerS8-LOFs?si=FyGiImTmhxM8wxHN" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/zPerS8-LOFs/mqdefault_6s.webp?du=3000&sqp=CMGGksEG&rs=AOn4CLCAQYdzmcHJuy1lsqPT_Uiq_9K4kw"
+             alt="240415 IVE GAEUL Gaeul-eat 🍽 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/zPerS8-LOFs/mqdefault_6s.webp?du=3000&sqp=CMGGksEG&rs=AOn4CLCAQYdzmcHJuy1lsqPT_Uiq_9K4kw">
+    </a>
+    <div class="video-details">
+        <a href="https://www.youtube.com/live/zPerS8-LOFs?si=FyGiImTmhxM8wxHN" target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/zPerS8-LOFs/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD2J2t_qg46J7-s2y224855s10k0Q"
+                 alt="240415 IVE GAEUL Gaeul-eat 🍽 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/zPerS8-LOFs/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD2J2t_qg46J7-s2y224855s10k0Q">
+        </a>
+        <div class="video-text">
+            <a href="https://www.youtube.com/live/zPerS8-LOFs?si=FyGiImTmhxM8wxHN" target="_blank"
+               rel="noopener noreferrer">
+                <h4 class="video-title">240415 IVE GAEUL Gaeul-eat 🍽</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+<div class="videos-video" data-video-id="TGqlMSRZPiw">
+    <a href="https://www.youtube.com/live/TGqlMSRZPiw?si=9UT14jiMFEn_MT-q" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/TGqlMSRZPiw/mqdefault_6s.webp?du=3000&sqp=CODykcEG&rs=AOn4CLDZu0TT5-pWoQPnz7l6rC7IwYb7MA"
+             alt="240303 IVE GAEUL LIZ Jani...? thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/TGqlMSRZPiw/mqdefault_6s.webp?du=3000&sqp=CODykcEG&rs=AOn4CLDZu0TT5-pWoQPnz7l6rC7IwYb7MA">
+    </a>
+    <div class="video-details">
+        <a href="https://www.youtube.com/live/TGqlMSRZPiw?si=9UT14jiMFEn_MT-q" target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/TGqlMSRZPiw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD7zR2tA6W7p5hY4u0G840t7q86qw"
+                 alt="240303 IVE GAEUL LIZ Jani...? small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/TGqlMSRZPiw/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD7zR2tA6W7p5hY4u0G840t7q86qw">
+        </a>
+        <div class="video-text">
+            <a href="https://www.youtube.com/live/TGqlMSRZPiw?si=9UT14jiMFEn_MT-q" target="_blank"
+               rel="noopener noreferrer">
+                <h4 class="video-title">240303 IVE GAEUL LIZ Jani...?</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+<div class="videos-video" data-video-id="-mtulMAmWvg">
+    <a href="https://www.youtube.com/live/-mtulMAmWvg?si=O6Ga2bDcsJPPOm8c" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/-mtulMAmWvg/mqdefault_6s.webp?du=3000&sqp=CIieksEG&rs=AOn4CLBiiOtHHOeIpLT8q-D3DJkFbVj5bA"
+             alt="230924 🐿 HAPPY IVE GAEUL DAY 🐿 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/-mtulMAmWvg/mqdefault_6s.webp?du=3000&sqp=CIieksEG&rs=AOn4CLBiiOtHHOeIpLT8q-D3DJkFbVj5bA">
+    </a>
+    <div class="video-details">
+        <a href="https://www.youtube.com/live/-mtulMAmWvg?si=O6Ga2bDcsJPPOm8c" target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/-mtulMAmWvg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAgD6r-4F5_8z955aT4t27E12R8qQ"
+                 alt="230924 🐿 HAPPY IVE GAEUL DAY 🐿 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/-mtulMAmWvg/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLAgD6r-4F5_8z955aT4t27E12R8qQ">
+        </a>
+        <div class="video-text">
+            <a href="https://www.youtube.com/live/-mtulMAmWvg?si=O6Ga2bDcsJPPOm8c" target="_blank"
+               rel="noopener noreferrer">
+                <h4 class="video-title">230924 🐿 HAPPY IVE GAEUL DAY 🐿</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+<div class="videos-video" data-video-id="u7UgxFGrt8k">
+    <a href="https://www.youtube.com/live/u7UgxFGrt8k?si=tGEgqVYl6Z-sGrzy" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/u7UgxFGrt8k/mqdefault_6s.webp?du=3000&sqp=CJaOksEG&rs=AOn4CLAhhoNucW5npiMGj-bDnx2eIggugg"
+             alt="230910 IVE GAEUL Meokjjangi Doeeo Dora 왔다 🍽️ thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/u7UgxFGrt8k/mqdefault_6s.webp?du=3000&sqp=CJaOksEG&rs=AOn4CLAhhoNucW5npiMGj-bDnx2eIggugg">
+    </a>
+    <div class="video-details">
+        <a href="https://www.youtube.com/live/u7UgxFGrt8k?si=tGEgqVYl6Z-sGrzy" target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/u7UgxFGrt8k/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD271eYyV5C1-5B39NlG7c_p9n-3w"
+                 alt="230910 IVE GAEUL Meokjjangi Doeeo Dora 왔다 🍽️ small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/u7UgxFGrt8k/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLD271eYyV5C1-5B39NlG7c_p9n-3w">
+        </a>
+        <div class="video-text">
+            <a href="https://www.youtube.com/live/u7UgxFGrt8k?si=tGEgqVYl6Z-sGrzy" target="_blank"
+               rel="noopener noreferrer">
+                <h4 class="video-title">230910 IVE GAEUL Meokjjangi Doeeo Dora 왔다 🍽️</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+<div class="videos-video" data-video-id="ox_ALj_Ah5s">
+    <a href="https://www.youtube.com/live/ox_ALj_Ah5s?si=mezTUbcrizmyria5" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/ox_ALj_Ah5s/mqdefault_6s.webp?du=3000&sqp=CL7xkcEG&rs=AOn4CLBZK7LVYDIClobxFbjcBCIHoCkBOw"
+             alt="230801 IVE GAEUL Bogosipeosseoyo Dive 🐿️💛 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/ox_ALj_Ah5s/mqdefault_6s.webp?du=3000&sqp=CL7xkcEG&rs=AOn4CLBZK7LVYDIClobxFbjcBCIHoCkBOw">
+    </a>
+    <div class="video-details">
+        <a href="https://www.youtube.com/live/ox_ALj_Ah5s?si=mezTUbcrizmyria5" target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/ox_ALj_Ah5s/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLg75X11t96gT9t7y-319s79_4D7lQ"
+                 alt="230801 IVE GAEUL Bogosipeosseoyo Dive 🐿️💛 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/ox_ALj_Ah5s/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLg75X11t96gT9t7y-319s79_4D7lQ">
+        </a>
+        <div class="video-text">
+            <a href="https://www.youtube.com/live/ox_ALj_Ah5s?si=mezTUbcrizmyria5" target="_blank"
+               rel="noopener noreferrer">
+                <h4 class="video-title">230801 IVE GAEUL Bogosipeosseoyo Dive 🐿️💛</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+<div class="videos-video" data-video-id="Prl6x1Z3voQ">
+    <a href="https://www.youtube.com/live/Prl6x1Z3voQ?si=vHmjfW-imBz2R1Sx" target="_blank" rel="noopener noreferrer">
+        <img src="https://i.ytimg.com/an_webp/Prl6x1Z3voQ/mqdefault_6s.webp?du=3000&sqp=CMSkksEG&rs=AOn4CLA6xWMPTmEWcbhIJvLzTO-Gngj6UA"
+             alt="230520 IVE GAEUL LIZ LEESEO Akaraka Wattdagam 💙 thumbnail" class="main-thumbnail lazy" data-src="https://i.ytimg.com/an_webp/Prl6x1Z3voQ/mqdefault_6s.webp?du=3000&sqp=CMSkksEG&rs=AOn4CLA6xWMPTmEWcbhIJvLzTO-Gngj6UA">
+    </a>
+    <div class="video-details">
+        <a href="https://www.youtube.com/live/Prl6x1Z3voQ?si=vHmjfW-imBz2R1Sx" target="_blank"
+           rel="noopener noreferrer">
+            <img src="https://i.ytimg.com/vi/Prl6x1Z3voQ/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLB-03Yh2rX2xL986v8006l6_gB16w"
+                 alt="230520 IVE GAEUL LIZ LEESEO Akaraka Wattdagam 💙 small thumbnail" class="small-thumbnail small-thumbnail-3 lazy" data-src="https://i.ytimg.com/vi/Prl6x1Z3voQ/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLB-03Yh2rX2xL986v8006l6_gB16w">
+        </a>
+        <div class="video-text">
+            <a href="https://www.youtube.com/live/Prl6x1Z3voQ?si=vHmjfW-imBz2R1Sx" target="_blank"
+               rel="noopener noreferrer">
+                <h4 class="video-title">230520 IVE GAEUL LIZ LEESEO Akaraka Wattdagam 💙</h4>
+            </a>
+            <p class="video-views">Views: </p>
+            <p class="video-published">Published: </p>
+        </div>
+    </div>
+</div>
+        
+                  </div>
+                </div>
+             </div>
+       </div>
+     </section>
+ 
+     <script>
+         const apiKey = 'AIzaSyAJ7XdwVgPCMyjeZGJtiRcg_9vvZE98rG4'; // **NHỚ THAY API KEY CỦA BẠN!**
+         const videoElements = document.querySelectorAll('.videos-video');
+ 
+         videoElements.forEach(videoElement => {
+             const videoId = videoElement.dataset.videoId;
+             const titleElement = videoElement.querySelector('.video-title');
+             const viewsElement = videoElement.querySelector('.video-views');
+             const publishedElement = videoElement.querySelector('.video-published');
+ 
+             if (videoId) {
+                 fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${apiKey}`)
+                     .then(response => {
+                         if (!response.ok) {
+                             throw new Error(`HTTP error! Status: ${response.status}`);
+                         }
+                         return response.json();
+                     })
+                     .then(data => {
+                         if (data.items && data.items.length > 0) {
+                             const video = data.items[0];
+                             // Cập nhật tiêu đề, lượt xem và ngày xuất bản
+                             titleElement.textContent = video.snippet.title;
+                             viewsElement.textContent = `Views: ${Number(video.statistics.viewCount).toLocaleString('en-US')}`;
+                             const publishedDate = new Date(video.snippet.publishedAt);
+                             const year = publishedDate.getFullYear();
+                             const month = String(publishedDate.getMonth() + 1).padStart(2, '0');
+                             const day = String(publishedDate.getDate()).padStart(2, '0');
+                             publishedElement.textContent = `Published: ${year}/${month}/${day}`;
+ 
+                             // Thêm thông tin khác (ví dụ: mô tả)
+                             // const descriptionElement = videoElement.querySelector('.video-description');
+                             // if (descriptionElement) {
+                             //     descriptionElement.textContent = video.snippet.description;
+                             // }
+ 
+                         } else {
+                             console.warn(`Could not retrieve data for video ID: ${videoId}`);
+                             // Hiển thị thông báo lỗi cho người dùng (tùy chọn)
+                             titleElement.textContent = "Video not found";
+                         }
+                     })
+                     .catch(error => {
+                         console.error(`Error fetching YouTube data for video ID ${videoId}:`, error);
+                         // Hiển thị thông báo lỗi cho người dùng (tùy chọn)
+                         titleElement.textContent = "Error loading video data";
+                         viewsElement.textContent = "";
+                         publishedElement.textContent = "";
+                     });
+             } else {
+                 console.warn("No video ID found for this video element.");
+                 titleElement.textContent = "No video ID";
+                 viewsElement.textContent = "";
+                 publishedElement.textContent = "";
+             }
+         });
+     </script>
+ 
+<section id="gallery" class="fade-in-up">
+    <h2>Gallery</h2>
+
+    <div class="gallery-year-section">
+        <h3 class="gallery-year-title">2022</h3>
+        <div class="gallery-grid gallery-grid-2022">
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/chicteen1.jpg" class="default-img lazy" data-src="images/chicteen1.jpg" alt="Gaeul 1">
+                    <img src="images/chicteen2.jpg" class="hovered-img lazy" data-src="images/chicteen2.jpg" alt="Gaeul 1 Hover">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/nb1.png" class="default-img lazy" data-src="images/nb1.png" alt="Gaeul 2">
+                    <img src="images/nb2.png" class="hovered-img lazy" data-src="images/nb2.png" alt="Gaeul 2 Hover">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/lenina1.png" class="default-img lazy" data-src="images/lenina1.png" alt="Gaeul 3">
+                    <img src="images/lenina2.png" class="hovered-img lazy" data-src="images/lenina2.png" alt="Gaeul 3 Hover">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/elle1.png" class="default-img lazy" data-src="images/elle1.png" alt="Gaeul 4">
+                    <img src="images/elle2.png" class="hovered-img lazy" data-src="images/elle2.png" alt="Gaeul 4 Hover">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-year-section">
+        <h3 class="gallery-year-title">2023</h3>
+        <div class="gallery-grid gallery-grid-2023">
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/dg1.png" class="default-img lazy" data-src="images/dg1.png" alt="Gaeul 1">
+                    <img src="images/dg2.png" class="hovered-img lazy" data-src="images/dg2.png" alt="Gaeul 1 Hover">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/lo-sing1.png" class="default-img lazy" data-src="images/lo-sing1.png" alt="Gaeul 2">
+                    <img src="images/lo-sing2.png" class="hovered-img lazy" data-src="images/lo-sing2.png" alt="Gaeul 2 Hover">
+                </div>
+            </div>
+            <div class="gallery-item empty-item"></div>
+            <div class="gallery-item empty-item"></div>
+        </div>
+    </div>
+
+    <div class="gallery-year-section">
+        <h3 class="gallery-year-title">2024</h3>
+        <div class="gallery-grid gallery-grid-2024">
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/lo-kr1.png" class="default-img lazy" data-src="images/lo-kr1.png" alt="Gaeul 1">
+                    <img src="images/lo-kr2.png" class="hovered-img lazy" data-src="images/lo-kr2.png" alt="Gaeul 1 Hover">
+                </div>
+            </div>
+            <div class="gallery-item empty-item"></div>
+            <div class="gallery-item empty-item"></div>
+            <div class="gallery-item empty-item"></div>
+        </div>
+    </div>
+
+    <div class="gallery-year-section">
+        <h3 class="gallery-year-title">2025</h3>
+        <div class="gallery-grid gallery-grid-2025">
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/tada1.png" class="default-img lazy" data-src="images/tada1.png" alt="Gaeul 1">
+                    <img src="images/tada2.png" class="hovered-img lazy" data-src="images/tada2.png" alt="Gaeul 1 Hover">
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="hover-img">
+                    <img src="images/esquire1.png" class="default-img lazy" data-src="images/esquire1.png" alt="Gaeul 2">
+                    <img src="images/esquire2.png" class="hovered-img lazy" data-src="images/esquire2.png" alt="Gaeul 2 Hover">
+                </div>
+            </div>
+            <div class="gallery-item empty-item"></div>
+            <div class="gallery-item empty-item"></div>
+        </div>
+    </div>
+</section>
  
      <section id="about" class="about-section fade-in-up">
          <h2>About</h2>
          <p>This is a fan-made website dedicated to Kim Gaeul. Information and images are for illustrative purposes only.</p>
      </section>
  
- <footer>
-     <p>Fanmade for Kim Gaeul — 2025 ©ivegaeul__</p>
-     <a href="#home" class="back-to-top"><img src="images/back-to-top.png" alt="Back to top"></a>
+     <footer>
+         <p>Fanmade for Kim Gaeul — 2025 ©ivegaeul__</p>
+         <a href="#home" class="back-to-top"><img src="images/back-to-top.png" alt="Back to top"></a>
  
- <script>
-     const fadeEls = document.querySelectorAll('.fade-in-up');
-     const backToTopBtn = document.querySelector('.back-to-top');  // Lấy nút
+         <script>
+             const fadeEls = document.querySelectorAll('.fade-in-up');
+             const backToTopBtn = document.querySelector('.back-to-top');
  
-     const observer = new IntersectionObserver((entries) => {
-         entries.forEach(entry => {
-             if (entry.isIntersecting) {
-                 entry.target.classList.add('show');
-                 observer.unobserve(entry.target);
-             }
-         });
-     }, { threshold: 0.2 });
+             const observer = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         entry.target.classList.add('show');
+                         observer.unobserve(entry.target);
+                     }
+                 });
+             }, { threshold: 0.2 });
  
-     fadeEls.forEach(el => observer.observe(el));
+             fadeEls.forEach(el => observer.observe(el));
  
-     // Hiển thị/ẩn nút mũi tên
-     window.addEventListener('scroll', () => {
-         if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200) {  // Gần cuối trang
-             backToTopBtn.style.display = 'block';
-         } else {
-             backToTopBtn.style.display = 'none';
-         }
-     });
- </script>
-
-
- <script>
-     document.addEventListener("DOMContentLoaded", function () {
-         const nav = document.querySelector(".nav-container");
-         const toggleBtn = document.createElement("button");
-         toggleBtn.innerHTML = "☰";
-         toggleBtn.className = "nav-toggle";
-         toggleBtn.addEventListener("click", () => {
-             nav.classList.toggle("expanded");
-         });
-         nav.insertBefore(toggleBtn, nav.firstChild);
-     });
- </script>
+             window.addEventListener('scroll', () => {
+                 if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200) {
+                     backToTopBtn.style.display = 'block';
+                 } else {
+                     backToTopBtn.style.display = 'none';
+                 }
+             });
+         </script>
+ 
+         <script>
+             document.addEventListener("DOMContentLoaded", function () {
+                 const nav = document.querySelector(".nav-container");
+                 const toggleBtn = document.createElement("button");
+                 toggleBtn.innerHTML = "☰";
+                 toggleBtn.className = "nav-toggle";
+                 toggleBtn.addEventListener("click", () => {
+                     nav.classList.toggle("expanded");
+                 });
+                 nav.insertBefore(toggleBtn, nav.firstChild);
+             });
+         </script>
+     </footer>
  </body>
  
  </html>
